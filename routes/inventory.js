@@ -1,5 +1,8 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
+import Size from '../models/size.js';
+import Breed from '../models/breed.js';
+import Dog from '../models/dog.js';
 import * as sizeController from '../controllers/sizeController.js';
 import * as breedController from '../controllers/breedController.js';
 import * as dogController from '../controllers/dogController.js';
@@ -10,8 +13,14 @@ const router = Router();
 
 router.get(
   '/',
-  asyncHandler((req, res, next) => {
-    res.send('We get to it when we get to it! - Index');
+  asyncHandler(async (req, res, next) => {
+    const [sizes, breeds, dogs] = await Promise.all([
+      Size.find({}, 'name').exec(),
+      Breed.find({}, 'name').exec(),
+      Dog.find({}, 'name').exec(),
+    ]);
+
+    res.render('index', { title: 'Catadog', sizes, breeds, dogs });
   })
 );
 
