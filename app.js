@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import mongoose from 'mongoose';
 import indexRouter from './routes/index.js';
+import inventoryRouter from './routes/inventory.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const mongoDB = process.env.MONGODB_URI;
@@ -30,6 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/inventory', inventoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
