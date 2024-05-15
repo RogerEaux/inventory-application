@@ -135,14 +135,17 @@ async function createBreeds() {
 }
 
 async function createDogs() {
-  dogCreate(0, 'Hermes', breeds[0], 4, 17, 50);
-  dogCreate(1, 'Athena', breeds[0], 6, null, 46);
-  dogCreate(2, 'Demeter', breeds[1], 10, 18, null);
-  dogCreate(3, 'Persephone', breeds[1], 2, null, 50);
-  dogCreate(4, 'Ares', breeds[2], 3, null, 13);
-  dogCreate(5, 'Aphrodite', breeds[3], 4, null, null);
-  dogCreate(6, 'Dionysus', breeds[3], null, null);
-  dogCreate(7, 'Apollo', breeds[4], 5, 49, 81);
-  dogCreate(8, 'Artemis', breeds[4], 5, 47, 76);
-  dogCreate(9, 'Hephaestus', breeds[5], 11, 45, 76);
+  console.log('Adding dogs');
+  await Promise.all([
+    dogCreate(0, 'Hermes', breeds[0], 4, 17, 50),
+    dogCreate(1, 'Athena', breeds[0], 6, null, 46),
+    dogCreate(2, 'Demeter', breeds[1], 10, 18, null),
+    dogCreate(3, 'Persephone', breeds[1], 2, null, 50),
+    dogCreate(4, 'Ares', breeds[2], 3, null, 13),
+    dogCreate(5, 'Aphrodite', breeds[3], 4, null, null),
+    dogCreate(6, 'Dionysus', breeds[3], 5, null, null),
+    dogCreate(7, 'Apollo', breeds[4], 5, 49, 81),
+    dogCreate(8, 'Artemis', breeds[4], 5, 47, 76),
+    dogCreate(9, 'Hephaestus', breeds[5], 11, 45, 76),
+  ]);
 }
