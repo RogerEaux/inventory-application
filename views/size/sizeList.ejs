@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sizes</title>
+</head>
+
+<body>
+  <%- include('../general/navBar') %>
+    <main>
+      <h1>Sizes</h1>
+      <ul>
+        <% sizeList.forEach((size)=> { %>
+          <li>
+            <a href=<%=size.url%>>
+              <%= size.name %>
+            </a>
+          </li>
+          <% }); %>
+      </ul>
+    </main>
+    <%- include('../general/addendum') %>
+</body>
+
+</html>
