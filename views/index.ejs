@@ -2,46 +2,50 @@
 <html>
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catadog</title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
 <body>
   <%- include('general/navBar') %>
-    <h1>Welcome to Catadog</h1>
-    <p>Catadog is an inventory application for a local dog adoption center</p>
-    <ul>
-      <li>
-        <p>We&apos;ve got sizes:</p>
-        <ul>
-          <% sizes.forEach((size)=> { %>
-            <li>
-              <%= size.name %>
-            </li>
-            <% }); %>
-        </ul>
-      </li>
-      <li>
-        <p>We&apos;ve got breeds:</p>
-        <ul>
-          <% breeds.forEach((breed)=> { %>
-            <li>
-              <%= breed.name %>
-            </li>
-            <% }); %>
-        </ul>
-      </li>
-      <li>
-        <p>And of course, we&apos;ve got these beautiful puppers:</p>
-        <ul>
-          <% dogs.forEach((dog)=> { %>
-            <li>
-              <%= dog.name %>
-            </li>
-            <% }); %>
-        </ul>
-      </li>
-    </ul>
+    <main>
+      <h1>Welcome to Catadog</h1>
+      <p>Catadog is an inventory application for a local dog adoption center</p>
+      <ul>
+        <li>
+          <p>We&apos;ve got sizes:</p>
+          <ul>
+            <% sizes.forEach((size)=> { %>
+              <li>
+                <%= size.name %>
+              </li>
+              <% }); %>
+          </ul>
+        </li>
+        <li>
+          <p>We&apos;ve got breeds:</p>
+          <ul>
+            <% breeds.forEach((breed)=> { %>
+              <li>
+                <%= breed.name %>
+              </li>
+              <% }); %>
+          </ul>
+        </li>
+        <li>
+          <p>And of course, we&apos;ve got these beautiful puppers:</p>
+          <ul>
+            <% dogs.forEach((dog)=> { %>
+              <li>
+                <%= dog.name %>
+              </li>
+              <% }); %>
+          </ul>
+        </li>
+      </ul>
+    </main>
     <%- include('general/addendum') %>
 </body>
 
