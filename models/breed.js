@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
 const BreedSchema = new mongoose.Schema({
   name: { type: String, required: true, maxLength: 100 },
