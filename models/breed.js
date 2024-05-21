@@ -8,7 +8,7 @@ const BreedSchema = new mongoose.Schema({
 });
 
 BreedSchema.virtual('url').get(function () {
-  return `/inventory/breed/${this.name}`;
+  return `/inventory/breed/${this._id}`;
 });
 
 const Breed = mongoose.model('Breed', BreedSchema);

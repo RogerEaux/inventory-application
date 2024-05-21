@@ -6,7 +6,7 @@ const SizeSchema = new mongoose.Schema({
 });
 
 SizeSchema.virtual('url').get(function () {
-  return `/inventory/size/${this.name.toLowerCase()}`;
+  return `/inventory/size/${this._id}`;
 });
 
 const Size = mongoose.model('Size', SizeSchema);
