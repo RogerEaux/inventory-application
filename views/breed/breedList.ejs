@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breeds</title>
+</head>
+
+<body>
+  <%- include('../general/navBar') %>
+    <main>
+      <h1>Breeds</h1>
+      <ul>
+        <% breedList.forEach((breed)=> { %>
+          <li>
+            <a href=<%=breed.url%>>
+              <%= breed.name %>
+            </a>
+          </li>
+          <% }); %>
+      </ul>
+    </main>
+    <%- include('../general/addendum') %>
+</body>
+
+</html>
