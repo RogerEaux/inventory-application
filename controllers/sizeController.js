@@ -1,3 +1,4 @@
+import Breed from '../models/breed.js';
 import Size from '../models/size.js';
 import asyncHandler from 'express-async-handler';
 
@@ -8,9 +9,12 @@ export const sizeList = asyncHandler(async (req, res, next) => {
 });
 
 export const sizeDetail = asyncHandler(async (req, res, next) => {
-  res.send(
-    `We get to it when we get to it! - Size Detail for ${req.params.id}`
-  );
+  const [size, sizeBreeds] = await Promise.all([
+    Size.findById(req.params.id).exec(),
+    Breed.find({ size: req.params.id }),
+  ]);
+
+  res.render('size/sizeDetail', { size, sizeBreeds });
 });
 
 export const sizeCreateGet = asyncHandler(async (req, res, next) => {
