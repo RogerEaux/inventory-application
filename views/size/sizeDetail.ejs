@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= size.name %>
+  </title>
+</head>
+
+<body>
+  <%- include('../general/navBar') %>
+    <main>
+      <h1>
+        <%= size.name %>
+      </h1>
+      <p>
+        <%= size.description %>
+      </p>
+      <ul>
+        <% sizeBreeds.forEach((breed)=> { %>
+          <li>
+            <a href=<%=breed.url%>>
+              <%= breed.name %>
+            </a>
+          </li>
+          <% }); %>
+      </ul>
+    </main>
+    <%- include('../general/addendum') %>
+</body>
+
+</html>
