@@ -2,7 +2,9 @@ import Size from '../models/size.js';
 import asyncHandler from 'express-async-handler';
 
 export const sizeList = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Size List');
+  const sizeList = await Size.find({}).exec();
+
+  res.render('size/sizeList', { sizeList });
 });
 
 export const sizeDetail = asyncHandler(async (req, res, next) => {
