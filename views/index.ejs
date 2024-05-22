@@ -15,7 +15,7 @@
       <p>Catadog is an inventory application for a local dog adoption center</p>
       <ul>
         <li>
-          <p>We&apos;ve got sizes:</p>
+          <p>We&apos;ve got <%= sizes.length %> sizes:</p>
           <ul>
             <% sizes.forEach((size)=> { %>
               <li>
@@ -25,7 +25,7 @@
           </ul>
         </li>
         <li>
-          <p>We&apos;ve got breeds:</p>
+          <p>We&apos;ve got <%= breeds.length %> breeds:</p>
           <ul>
             <% breeds.forEach((breed)=> { %>
               <li>
@@ -35,7 +35,7 @@
           </ul>
         </li>
         <li>
-          <p>And of course, we&apos;ve got these beautiful puppers:</p>
+          <p>And of course, we&apos;ve got <%= dogs.length %> beautiful puppers:</p>
           <ul>
             <% dogs.forEach((dog)=> { %>
               <li>
