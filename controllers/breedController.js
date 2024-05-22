@@ -109,9 +109,75 @@ export const breedDeletePost = asyncHandler(async (req, res, next) => {
 });
 
 export const breedUpdateGet = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Breed Update Get');
+  const [breed, sizes] = await Promise.all([
+    Breed.findById(req.params.id).exec(),
+    Size.find({}, 'name').exec(),
+  ]);
+
+  if (!breed) {
+    const err = new Error('Breed not found');
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render('breed/breedForm', {
+    title: 'Update Breed',
+    sizes,
+    breed,
+    errors: null,
+  });
 });
 
-export const breedUpdatePost = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Breed Update Post');
-});
+export const breedUpdatePost = [
+  body('name')
+    .trim()
+    .notEmpty()
+    .escape()
+    .withMessage('Name must not be empty')
+    .isLength({ max: 100 })
+    .withMessage('Name must be less than 100 characters'),
+
+  body('description')
+    .trim()
+    .notEmpty()
+    .escape()
+    .withMessage('Description must not be empty')
+    .isLength({ max: 500 })
+    .withMessage('Description must be less than 500 characters'),
+
+  body('size', 'Size must not be empty').trim().notEmpty().escape(),
+
+  body('lifeExpectancy')
+    .trim()
+    .notEmpty()
+    .escape()
+    .withMessage('Life expectancy must not be empty')
+    .isNumeric({ min: 0 })
+    .withMessage('Life expectancy must be a number greater than 0'),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    const breed = new Breed({
+      name: req.body.name,
+      description: req.body.description,
+      size: req.body.size,
+      life_expectancy: req.body.lifeExpectancy,
+      _id: req.params.id,
+    });
+
+    if (!errors.isEmpty()) {
+      const sizes = await Size.find({}, 'name').exec();
+
+      res.render('breed/breedForm', {
+        title: 'Update Breed',
+        sizes,
+        breed,
+        errors: errors.array(),
+      });
+    } else {
+      await Breed.findByIdAndUpdate(req.params.id, breed);
+      res.redirect(breed.url);
+    }
+  }),
+];
