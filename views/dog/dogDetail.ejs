@@ -13,11 +13,11 @@
   <%- include('../general/navBar') %>
     <main>
       <h1>
-        <%= dog.name %>
+        <%- dog.name %>
       </h1>
       <div class="details">
         <p>
-          Breed: <%= dog.breed.name %>
+          Breed: <%- dog.breed.name %>
         </p>
         <p>
           Age: <%= dog.age ? dog.age : 'N/A' %>
