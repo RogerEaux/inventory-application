@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= dog.name %>
+  </title>
+</head>
+
+<body>
+  <%- include('../general/navBar') %>
+    <main>
+      <h1>
+        <%= dog.name %>
+      </h1>
+      <div class="details">
+        <p>
+          Breed: <%= dog.breed.name %>
+        </p>
+        <% if(dog.age){ %>
+          <p>
+            Age: <%= dog.age %>
+          </p>
+          <% } %>
+            <% if(dog.weight){ %>
+              <p>
+                Weight: <%= dog.weight %>
+              </p>
+              <% } %>
+                <% if(dog.height){ %>
+                  <p>
+                    Height: <%= dog.height %>
+                  </p>
+                  <% } %>
+      </div>
+    </main>
+    <%- include('../general/addendum') %>
+</body>
+
+</html>
