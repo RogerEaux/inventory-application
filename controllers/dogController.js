@@ -8,7 +8,15 @@ export const dogList = asyncHandler(async (req, res, next) => {
 });
 
 export const dogDetail = asyncHandler(async (req, res, next) => {
-  res.send(`We get to it when we get to it! - Dog Detail for ${req.params.id}`);
+  const dog = await Dog.findById(req.params.id).populate('breed').exec();
+
+  if (dog === null) {
+    const err = new Error('Dog not found');
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render('dog/dogDetail', { dog });
 });
 
 export const dogCreateGet = asyncHandler(async (req, res, next) => {
