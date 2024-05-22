@@ -22,27 +22,3 @@ export const sizeDetail = asyncHandler(async (req, res, next) => {
 
   res.render('size/sizeDetail', { size, sizeBreeds });
 });
-
-export const sizeCreateGet = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Size Create Get');
-});
-
-export const sizeCreatePost = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Size Create Post');
-});
-
-export const sizeDeleteGet = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Size Delete Get');
-});
-
-export const sizeDeletePost = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Size Delete Post');
-});
-
-export const sizeUpdateGet = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Size Update Get');
-});
-
-export const sizeUpdatePost = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Size Update Post');
-});

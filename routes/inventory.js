@@ -26,15 +26,6 @@ router.get(
 
 // Size Routes
 
-router.get('/size/create', sizeController.sizeCreateGet);
-router.post('/size/create', sizeController.sizeCreatePost);
-
-router.get('/size/:id/delete', sizeController.sizeDeleteGet);
-router.post('/size/:id/delete', sizeController.sizeDeletePost);
-
-router.get('/size/:id/update', sizeController.sizeUpdateGet);
-router.post('/size/:id/update', sizeController.sizeUpdatePost);
-
 router.get('/size/:id', sizeController.sizeDetail);
 router.get('/sizes', sizeController.sizeList);
 
