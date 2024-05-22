@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= title %>
+  </title>
+</head>
+
+<body>
+  <%- include('../general/navBar') %>
+    <main>
+      <h1>
+        <%= title %>
+      </h1>
+      <form method="post">
+        <label>
+          <span>*Name: </span>
+          <input required name="name" id="name" type="text" placeholder="Name of breed" value=<%=breed ? breed.name : ''
+            %>>
+        </label>
+        <label>
+          <span>*Description: </span>
+          <textarea required name="description" id="description" placeholder="Description of the breed" value=<%=breed ?
+            breed.description : '' %>></textarea>
+        </label>
+        <label>
+          <span>*Size: </span>
+          <select name="size" id="size" required>
+            <option value="">--Select a size--</option>
+            <% sizes.forEach((size)=> { %>
+              <% if(breed) { %>
+                <% if(breed.size._id.toString()===size._id.toString()) { %>
+                  <option value=<%=size._id %> selected>
+                    <%= size.name %>
+                  </option>
+                  <% } else { %>
+                    <option value=<%=size._id %>>
+                      <%= size.name %>
+                    </option>
+                    <% } %>
+                      <% } else { %>
+                        <option value=<%=size._id %>>
+                          <%= size.name %>
+                        </option>
+                        <% } %>
+                          <% }) %>
+          </select>
+        </label>
+        <label>
+          <span>*Life expectancy (years): </span>
+          <input required name="lifeExpectancy" id="lifeExpectancy" type="number" placeholder="Life expectancy of breed"
+            value=<%=breed ? breed.life_expectancy : '' %>>
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+
+      <% if(errors){ %>
+        <ul>
+          <% errors.forEach((error)=> { %>
+            <li>
+              <%= error.msg %>
+            </li>
+            <% }) %>
+        </ul>
+        <% } %>
+    </main>
+    <%- include('../general/addendum') %>
+</body>
+
+</html>
