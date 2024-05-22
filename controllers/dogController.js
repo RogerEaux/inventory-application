@@ -101,11 +101,18 @@ export const dogCreatePost = [
 ];
 
 export const dogDeleteGet = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Dog Delete Get');
+  const dog = await Dog.findById(req.params.id).exec();
+
+  if (!dog) {
+    res.redirect('/inventory/dogs');
+  }
+
+  res.render('dog/dogDelete', { dog });
 });
 
 export const dogDeletePost = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Dog Delete Post');
+  await Dog.findByIdAndDelete(req.body.dogID).exec();
+  res.redirect('/inventory/dogs');
 });
 
 export const dogUpdateGet = asyncHandler(async (req, res, next) => {
