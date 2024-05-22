@@ -19,18 +19,15 @@
         <p>
           Breed: <%= dog.breed.name %>
         </p>
-        <% if(dog.age) %>
-          <p>
-            Age: <%= dog.age %>
-          </p>
-          <% if(dog.weight) %>
-            <p>
-              Weight: <%= dog.weight %>
-            </p>
-            <% if(dog.height) %>
-              <p>
-                Height: <%= dog.height %>
-              </p>
+        <p>
+          Age: <%= dog.age ? dog.age : 'N/A' %>
+        </p>
+        <p>
+          Weight: <%= dog.weight ? dog.weight : 'N/A' %>
+        </p>
+        <p>
+          Height: <%= dog.height ? dog.height : 'N/A' %>
+        </p>
       </div>
     </main>
     <%- include('../general/addendum') %>
