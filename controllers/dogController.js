@@ -33,7 +33,13 @@ export const dogCreateGet = asyncHandler(async (req, res, next) => {
 });
 
 export const dogCreatePost = [
-  body('name', 'Name must not be empty').trim().notEmpty().escape(),
+  body('name')
+    .trim()
+    .notEmpty()
+    .escape()
+    .withMessage('Name must not be empty')
+    .isLength({ max: 100 })
+    .withMessage('Name must be less than 100 characters'),
 
   body('breed', 'Breed must not be empty').trim().notEmpty().escape(),
 
