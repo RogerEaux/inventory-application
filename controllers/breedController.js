@@ -4,6 +4,34 @@ import Dog from '../models/dog.js';
 import asyncHandler from 'express-async-handler';
 import { body, validationResult } from 'express-validator';
 
+const breedValidation = [
+  body('name')
+    .trim()
+    .notEmpty()
+    .escape()
+    .withMessage('Name must not be empty')
+    .isLength({ max: 100 })
+    .withMessage('Name must be less than 100 characters'),
+
+  body('description')
+    .trim()
+    .notEmpty()
+    .escape()
+    .withMessage('Description must not be empty')
+    .isLength({ max: 500 })
+    .withMessage('Description must be less than 500 characters'),
+
+  body('size', 'Size must not be empty').trim().notEmpty().escape(),
+
+  body('lifeExpectancy')
+    .trim()
+    .notEmpty()
+    .escape()
+    .withMessage('Life expectancy must not be empty')
+    .isNumeric({ min: 0 })
+    .withMessage('Life expectancy must be a number greater than 0'),
+];
+
 export const breedList = asyncHandler(async (req, res, next) => {
   const breedList = await Breed.find({}, 'name').sort({ name: 1 }).exec();
 
@@ -37,31 +65,7 @@ export const breedCreateGet = asyncHandler(async (req, res, next) => {
 });
 
 export const breedCreatePost = [
-  body('name')
-    .trim()
-    .notEmpty()
-    .escape()
-    .withMessage('Name must not be empty')
-    .isLength({ max: 100 })
-    .withMessage('Name must be less than 100 characters'),
-
-  body('description')
-    .trim()
-    .notEmpty()
-    .escape()
-    .withMessage('Description must not be empty')
-    .isLength({ max: 500 })
-    .withMessage('Description must be less than 500 characters'),
-
-  body('size', 'Size must not be empty').trim().notEmpty().escape(),
-
-  body('lifeExpectancy')
-    .trim()
-    .notEmpty()
-    .escape()
-    .withMessage('Life expectancy must not be empty')
-    .isNumeric({ min: 0 })
-    .withMessage('Life expectancy must be a number greater than 0'),
+  ...breedValidation,
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
@@ -129,31 +133,7 @@ export const breedUpdateGet = asyncHandler(async (req, res, next) => {
 });
 
 export const breedUpdatePost = [
-  body('name')
-    .trim()
-    .notEmpty()
-    .escape()
-    .withMessage('Name must not be empty')
-    .isLength({ max: 100 })
-    .withMessage('Name must be less than 100 characters'),
-
-  body('description')
-    .trim()
-    .notEmpty()
-    .escape()
-    .withMessage('Description must not be empty')
-    .isLength({ max: 500 })
-    .withMessage('Description must be less than 500 characters'),
-
-  body('size', 'Size must not be empty').trim().notEmpty().escape(),
-
-  body('lifeExpectancy')
-    .trim()
-    .notEmpty()
-    .escape()
-    .withMessage('Life expectancy must not be empty')
-    .isNumeric({ min: 0 })
-    .withMessage('Life expectancy must be a number greater than 0'),
+  ...breedValidation,
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);

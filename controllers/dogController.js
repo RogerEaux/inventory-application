@@ -3,36 +3,7 @@ import Dog from '../models/dog.js';
 import asyncHandler from 'express-async-handler';
 import { body, validationResult } from 'express-validator';
 
-export const dogList = asyncHandler(async (req, res, next) => {
-  const dogList = await Dog.find({}, 'name').sort({ name: 1 }).exec();
-
-  res.render('dog/dogList', { dogList });
-});
-
-export const dogDetail = asyncHandler(async (req, res, next) => {
-  const dog = await Dog.findById(req.params.id).populate('breed').exec();
-
-  if (dog === null) {
-    const err = new Error('Dog not found');
-    err.status = 404;
-    return next(err);
-  }
-
-  res.render('dog/dogDetail', { dog });
-});
-
-export const dogCreateGet = asyncHandler(async (req, res, next) => {
-  const breeds = await Breed.find({}, 'name').sort({ name: 1 }).exec();
-
-  res.render('dog/dogForm', {
-    title: 'Create Dog',
-    breeds,
-    dog: null,
-    errors: null,
-  });
-});
-
-export const dogCreatePost = [
+const dogValidation = [
   body('name')
     .trim()
     .notEmpty()
@@ -69,6 +40,39 @@ export const dogCreatePost = [
     .withMessage('Height must not be empty')
     .isNumeric({ min: 0 })
     .withMessage('Height must be a number greater than 0'),
+];
+
+export const dogList = asyncHandler(async (req, res, next) => {
+  const dogList = await Dog.find({}, 'name').sort({ name: 1 }).exec();
+
+  res.render('dog/dogList', { dogList });
+});
+
+export const dogDetail = asyncHandler(async (req, res, next) => {
+  const dog = await Dog.findById(req.params.id).populate('breed').exec();
+
+  if (dog === null) {
+    const err = new Error('Dog not found');
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render('dog/dogDetail', { dog });
+});
+
+export const dogCreateGet = asyncHandler(async (req, res, next) => {
+  const breeds = await Breed.find({}, 'name').sort({ name: 1 }).exec();
+
+  res.render('dog/dogForm', {
+    title: 'Create Dog',
+    breeds,
+    dog: null,
+    errors: null,
+  });
+});
+
+export const dogCreatePost = [
+  ...dogValidation,
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
@@ -131,42 +135,7 @@ export const dogUpdateGet = asyncHandler(async (req, res, next) => {
 });
 
 export const dogUpdatePost = [
-  body('name')
-    .trim()
-    .notEmpty()
-    .escape()
-    .withMessage('Name must not be empty')
-    .isLength({ max: 100 })
-    .withMessage('Name must be less than 100 characters'),
-
-  body('breed', 'Breed must not be empty').trim().notEmpty().escape(),
-
-  body('age')
-    .optional({ values: 'falsy' })
-    .trim()
-    .notEmpty()
-    .escape()
-    .withMessage('Age must not be empty')
-    .isNumeric({ min: 0 })
-    .withMessage('Age must be a number greater than 0'),
-
-  body('weight')
-    .optional({ values: 'falsy' })
-    .trim()
-    .notEmpty()
-    .escape()
-    .withMessage('Weight must not be empty')
-    .isNumeric({ min: 0 })
-    .withMessage('Weight must be a number greater than 0'),
-
-  body('height')
-    .optional({ values: 'falsy' })
-    .trim()
-    .notEmpty()
-    .escape()
-    .withMessage('Height must not be empty')
-    .isNumeric({ min: 0 })
-    .withMessage('Height must be a number greater than 0'),
+  ...dogValidation,
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
