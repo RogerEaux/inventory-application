@@ -19,7 +19,12 @@
           <ul>
             <% sizes.forEach((size)=> { %>
               <li>
-                <%= size.name %>
+                <a href="<%=size.url%>">
+                  <img src="/images/svg/dog-house.svg" alt="">
+                </a>
+                <span>
+                  <%= size.name %>
+                </span>
               </li>
               <% }); %>
           </ul>
@@ -27,22 +32,34 @@
         <li>
           <p>We&apos;ve got <%= breeds.length %> breeds:</p>
           <ul>
-            <% breeds.forEach((breed)=> { %>
+            <% for(let i=0; i < 3; i+=1){ %>
               <li>
-                <%= breed.name %>
+                <a href="<%= breeds[i].url %>">
+                  <img src="<%= breeds[i].img_url %>" alt="Picture of a <%= breeds[i].name %>">
+                </a>
+                <span>
+                  <%= breeds[i].name %>
+                </span>
               </li>
-              <% }); %>
+              <% }; %>
           </ul>
+          <a href="/inventory/breeds">See more!</a>
         </li>
         <li>
           <p>And of course, we&apos;ve got <%= dogs.length %> beautiful puppers:</p>
           <ul>
-            <% dogs.forEach((dog)=> { %>
+            <% for(let i=0; i < 3; i+=1){ %>
               <li>
-                <%= dog.name %>
+                <a href="<%= dogs[i].url %>">
+                  <img src="<%= dogs[i].img_url %>" alt="Picture of <%= dogs[i].name %>">
+                </a>
+                <span>
+                  <%= dogs[i].name %>
+                </span>
               </li>
-              <% }); %>
+              <% }; %>
           </ul>
+          <a href="/inventory/breeds">See more!</a>
         </li>
       </ul>
     </main>

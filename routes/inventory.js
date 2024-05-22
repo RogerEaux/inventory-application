@@ -16,8 +16,8 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const [sizes, breeds, dogs] = await Promise.all([
       Size.find({}, 'name').exec(),
-      Breed.find({}, 'name').sort({ name: 1 }).exec(),
-      Dog.find({}, 'name').sort({ name: 1 }).exec(),
+      Breed.find({}, 'name img_url').sort({ name: 1 }).exec(),
+      Dog.find({}, 'name img_url').sort({ name: 1 }).exec(),
     ]);
 
     res.render('index', { title: 'Catadog', sizes, breeds, dogs });
