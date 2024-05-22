@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Breed</title>
+</head>
+
+<body>
+  <%- include('../general/navBar') %>
+    <main>
+      <h1>
+        Delete <%= breed.name %>?
+      </h1>
+
+      <% if(breedDogs.length> 0){ %>
+        <h2>This will also delete all these beautiful dogs:</h2>
+        <ul>
+          <% breedDogs.forEach((dog)=> { %>
+            <li>
+              <a href=<%=dog.url%>>
+                <%= dog.name %>
+              </a>
+            </li>
+            <% }); %>
+        </ul>
+        <% } %>
+          <form method="post">
+            <input name="breedID" id="breedID" type="hidden" value=<%=breed._id%>>
+            <button type="submit">Delete</button>
+          </form>
+    </main>
+    <%- include('../general/addendum') %>
+</body>
+
+</html>
