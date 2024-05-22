@@ -18,8 +18,8 @@
       <form method="post">
         <label>
           <span>*Name: </span>
-          <input required name="name" id="name" type="text" placeholder="Name of breed" value=<%=breed ? breed.name : ''
-            %>>
+          <input required name="name" id="name" type="text" placeholder="Name of breed" value="<%= breed ? breed.name : ''
+            %>">
         </label>
         <label>
           <span>*Description: </span>
@@ -33,16 +33,16 @@
             <% sizes.forEach((size)=> { %>
               <% if(breed) { %>
                 <% if(breed.size._id.toString()===size._id.toString()) { %>
-                  <option value=<%=size._id %> selected>
+                  <option value="<%=size._id %>" selected>
                     <%= size.name %>
                   </option>
                   <% } else { %>
-                    <option value=<%=size._id %>>
+                    <option value="<%=size._id %>">
                       <%= size.name %>
                     </option>
                     <% } %>
                       <% } else { %>
-                        <option value=<%=size._id %>>
+                        <option value="<%=size._id %>">
                           <%= size.name %>
                         </option>
                         <% } %>
@@ -52,7 +52,7 @@
         <label>
           <span>*Life expectancy (years): </span>
           <input required name="lifeExpectancy" id="lifeExpectancy" type="number" placeholder="Life expectancy of breed"
-            value=<%=breed ? breed.life_expectancy : '' %>>
+            value="<%=breed ? breed.life_expectancy : '' %>">
         </label>
         <button type="submit">Submit</button>
       </form>

@@ -18,7 +18,7 @@
       <form method="post">
         <label>
           <span>*Name: </span>
-          <input required name="name" id="name" type="text" placeholder="Name of dog" value=<%=dog ? dog.name : '' %>>
+          <input required name="name" id="name" type="text" placeholder="Name of dog" value="<%=dog ? dog.name : '' %>">
         </label>
         <label>
           <span>*Breed: </span>
@@ -27,16 +27,16 @@
             <% breeds.forEach((breed)=> { %>
               <% if(dog) { %>
                 <% if(dog.breed._id.toString()===breed._id.toString()) { %>
-                  <option value=<%=breed._id %> selected>
+                  <option value="<%=breed._id %>" selected>
                     <%= breed.name %>
                   </option>
                   <% } else { %>
-                    <option value=<%=breed._id %>>
+                    <option value="<%=breed._id %>">
                       <%= breed.name %>
                     </option>
                     <% } %>
                       <% } else { %>
-                        <option value=<%=breed._id %>>
+                        <option value="<%=breed._id %>">
                           <%= breed.name %>
                         </option>
                         <% } %>
@@ -45,18 +45,18 @@
         </label>
         <label>
           <span>Age (years): </span>
-          <input name="age" id="age" type="number" placeholder="Age of dog" step="any" min="0" value=<%=dog ? dog.age
-            : '' %>>
+          <input name="age" id="age" type="number" placeholder="Age of dog" step="any" min="0"
+            value="<%=dog ? dog.age : '' %>">
         </label>
         <label>
           <span>Weight (kg): </span>
-          <input name="weight" id="weight" type="number" placeholder="Weight of dog" step="any" min="0" value=<%=dog ?
-            dog.weight : '' %>>
+          <input name="weight" id="weight" type="number" placeholder="Weight of dog" step="any" min="0"
+            value="<%=dog ? dog.weight : '' %>">
         </label>
         <label>
           <span>Height (cm): </span>
-          <input name="height" id="height" type="number" placeholder="Height of dog" step="any" min="0" value=<%=dog ?
-            dog.height : '' %>>
+          <input name="height" id="height" type="number" placeholder="Height of dog" step="any" min="0"
+            value="<%=dog ? dog.height : '' %>">
         </label>
         <button type="submit">Submit</button>
       </form>
