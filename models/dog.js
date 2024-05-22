@@ -4,7 +4,7 @@ const DogSchema = new mongoose.Schema({
   name: { type: String, required: true, maxLength: 100 },
   breed: { type: mongoose.Schema.Types.ObjectId, ref: 'Breed', required: true },
   age: { type: Number },
-  weigth: { type: Number },
+  weight: { type: Number },
   height: { type: Number },
 });
 
