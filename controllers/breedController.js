@@ -2,7 +2,7 @@ import Breed from '../models/breed.js';
 import asyncHandler from 'express-async-handler';
 
 export const breedList = asyncHandler(async (req, res, next) => {
-  const breedList = await Breed.find({}, 'name').exec();
+  const breedList = await Breed.find({}, 'name').sort({ name: 1 }).exec();
 
   res.render('breed/breedList', { breedList });
 });
