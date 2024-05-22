@@ -90,11 +90,22 @@ export const breedCreatePost = [
 ];
 
 export const breedDeleteGet = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Breed Delete Get');
+  const [breed, breedDogs] = await Promise.all([
+    Breed.findById(req.params.id).exec(),
+    Dog.find({ breed: req.params.id }, 'name').sort({ name: 1 }).exec(),
+  ]);
+
+  if (!breed) {
+    res.redirect('/inventory/breeds');
+  }
+
+  res.render('breed/breedDelete', { breed, breedDogs });
 });
 
 export const breedDeletePost = asyncHandler(async (req, res, next) => {
-  res.send('We get to it when we get to it! - Breed Delete Post');
+  await Breed.findByIdAndDelete(req.body.breedID).exec();
+  await Dog.deleteMany({ breed: req.body.breedID }).exec();
+  res.redirect('/inventory/breeds');
 });
 
 export const breedUpdateGet = asyncHandler(async (req, res, next) => {
