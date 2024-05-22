@@ -29,6 +29,7 @@
           Height: <%= dog.height ? dog.height : 'N/A' %>
         </p>
       </div>
+      <a href=<%=`${dog.url}/update`%> >Update Dog</a>
       <a href=<%=`${dog.url}/delete`%> >Delete Dog</a>
     </main>
     <%- include('../general/addendum') %>
