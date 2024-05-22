@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dogs</title>
+</head>
+
+<body>
+  <%- include('../general/navBar') %>
+    <main>
+      <h1>Dogs</h1>
+      <ul>
+        <% dogList.forEach((dog)=> { %>
+          <li>
+            <a href=<%=dog.url%>>
+              <%= dog.name %>
+            </a>
+          </li>
+          <% }); %>
+      </ul>
+    </main>
+    <%- include('../general/addendum') %>
+</body>
+
+</html>
