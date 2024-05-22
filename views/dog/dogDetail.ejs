@@ -20,13 +20,13 @@
           Breed: <%- dog.breed.name %>
         </p>
         <p>
-          Age: <%= dog.age ? dog.age : 'N/A' %>
+          Age: <%= dog.age ? dog.age : 'N/A' %> years
         </p>
         <p>
-          Weight: <%= dog.weight ? dog.weight : 'N/A' %>
+          Weight: <%= dog.weight ? dog.weight : 'N/A' %> kg
         </p>
         <p>
-          Height: <%= dog.height ? dog.height : 'N/A' %>
+          Height: <%= dog.height ? dog.height : 'N/A' %> cm
         </p>
       </div>
       <a href=<%=`${dog.url}/update`%> >Update Dog</a>
