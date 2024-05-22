@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= breed.name %>
+  </title>
+</head>
+
+<body>
+  <%- include('../general/navBar') %>
+    <main>
+      <h1>
+        <%= breed.name %>
+      </h1>
+      <p>
+        <%= breed.description %>
+      </p>
+      <div class="details">
+        <p>
+          Size: <%= breed.size.name %>
+        </p>
+        <p>
+          Life Expectancy: <%= breed.life_expectancy %> years
+        </p>
+      </div>
+      <h2>Dogs</h2>
+      <ul>
+        <% breedDogs.forEach((dog)=> { %>
+          <li>
+            <a href=<%=dog.url%>>
+              <%= dog.name %>
+            </a>
+          </li>
+          <% }); %>
+      </ul>
+    </main>
+    <%- include('../general/addendum') %>
+</body>
+
+</html>
