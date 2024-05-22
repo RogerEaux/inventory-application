@@ -9,7 +9,7 @@ const DogSchema = new mongoose.Schema({
 });
 
 DogSchema.virtual('url').get(function () {
-  return `/invevntory/dog/${this._id}`;
+  return `/inventory/dog/${this._id}`;
 });
 
 const Dog = mongoose.model('Dog', DogSchema);
