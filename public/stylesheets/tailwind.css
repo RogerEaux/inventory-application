@@ -7,6 +7,11 @@
   src: url('../fonts/Montserrat-Regular.ttf');
 }
 
+@font-face {
+  font-family: GoodDog;
+  src: url('../fonts/GoodDog.ttf');
+}
+
 * {
   margin: 0;
   padding: 0;
