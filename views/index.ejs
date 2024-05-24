@@ -10,23 +10,37 @@
 
 <body>
   <%- include('general/navBar') %>
-    <main>
-      <h1>Welcome to Catadog</h1>
-      <p>Catadog is an inventory application for a local dog adoption center</p>
+    <main class="p-8">
+      <h1 class="text-4xl font-bold">Welcome to Catadog</h1>
+      <p class="text-center text-2xl my-16">Catadog is an inventory application for a local dog adoption center</p>
       <ul>
-        <li>
-          <p>We&apos;ve got <%= sizes.length %> sizes:</p>
-          <ul>
-            <% sizes.forEach((size)=> { %>
-              <li>
-                <a href="<%=size.url%>">
-                  <img src="/images/svg/dog-house.svg" alt="">
-                </a>
-                <span>
-                  <%= size.name %>
-                </span>
-              </li>
-              <% }); %>
+        <li class="mb-8">
+          <p class="text-xl">We&apos;ve got <%= sizes.length %> sizes:</p>
+          <ul class="flex justify-evenly">
+            <li class="flex flex-col justify-end">
+              <a href="<%=sizes[0].url%>">
+                <img class="size-16" src="/images/svg/dog-house.svg" alt="">
+                <p class="text-lg text-center mt-4">
+                  <%= sizes[0].name %>
+                </p>
+              </a>
+            </li>
+            <li class="flex flex-col items-center justify-end">
+              <a href="<%=sizes[1].url%>">
+                <img class="size-32" src="/images/svg/dog-house.svg" alt="">
+                <p class="text-xl text-center mt-4">
+                  <%= sizes[1].name %>
+                </p>
+              </a>
+            </li>
+            <li class="flex flex-col items-center justify-end">
+              <a href="<%=sizes[2].url%>">
+                <img class="size-48" src="/images/svg/dog-house.svg" alt="">
+                <p class="text-2xl text-center mt-4">
+                  <%= sizes[2].name %>
+                </p>
+              </a>
+            </li>
           </ul>
         </li>
         <li>
@@ -35,7 +49,7 @@
             <% for(let i=0; i < 3; i+=1){ %>
               <li>
                 <a href="<%= breeds[i].url %>">
-                  <img src="<%= breeds[i].img_url %>" alt="Picture of a <%= breeds[i].name %>">
+                  <img src="<%= breeds[i].img_ur %>" alt="Picture of a <%= breeds[i].name %>">
                 </a>
                 <span>
                   <%= breeds[i].name %>
@@ -51,7 +65,7 @@
             <% for(let i=0; i < 3; i+=1){ %>
               <li>
                 <a href="<%= dogs[i].url %>">
-                  <img src="<%= dogs[i].img_url %>" alt="Picture of <%= dogs[i].name %>">
+                  <img src="<%= dogs[i].img_ur %>" alt="Picture of <%= dogs[i].name %>">
                 </a>
                 <span>
                   <%= dogs[i].name %>
