@@ -12,26 +12,32 @@
 
 <body>
   <%- include('../general/navBar') %>
-    <main>
-      <h1>
+    <main class="flex flex-col gap-8 px-16 py-8">
+      <img class="self-center size-96 rounded-full shadow-blurry " src="<%= dog.img_ur %>"
+        alt="Picture of <%= dog.name %>">
+      <h1 class="text-4xl font-bold">
         <%- dog.name %>
       </h1>
-      <div class="details">
-        <p>
+      <ul class="flex flex-col gap-4 text-lg">
+        <li>
           Breed: <%- dog.breed.name %>
-        </p>
-        <p>
-          Age: <%= dog.age ? dog.age : 'N/A' %> years
-        </p>
-        <p>
-          Weight: <%= dog.weight ? dog.weight : 'N/A' %> kg
-        </p>
-        <p>
-          Height: <%= dog.height ? dog.height : 'N/A' %> cm
-        </p>
+        </li>
+        <li>
+          Age: <%= dog.age ? `${dog.age} years` : 'N/A' %>
+        </li>
+        <li>
+          Weight: <%= dog.weight ? `${dog.weight} kg` : 'N/A' %>
+        </li>
+        <li>
+          Height: <%= dog.height ? `${dog.height} cm` : 'N/A' %>
+        </li>
+      </ul>
+      <div id="buttons" class="flex justify-center gap-20">
+        <a class="self-center py-3 px-6 border-4 border-solid border-blue-700 rounded-lg font-bold text-lg text-blue-700 transition-all duration-300 hover:bg-blue-700 hover:text-white"
+          href=<%=`${dog.url}/update`%> >Update Dog</a>
+        <a class="self-center py-3 px-6 border-4 border-solid border-red-700 rounded-lg font-bold text-lg text-red-700 transition-all duration-300 hover:bg-red-700 hover:text-white"
+          href=<%=`${dog.url}/delete`%> >Delete Dog</a>
       </div>
-      <a href=<%=`${dog.url}/update`%> >Update Dog</a>
-      <a href=<%=`${dog.url}/delete`%> >Delete Dog</a>
     </main>
     <%- include('../general/addendum') %>
 </body>
