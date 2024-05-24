@@ -15,12 +15,12 @@
       <p class="text-center text-2xl my-16">Catadog is an inventory application for a local dog adoption center</p>
       <ul>
         <li class="mb-16">
-          <p class="text-xl">We&apos;ve got <%= sizes.length %> sizes:</p>
+          <p class="text-xl font-bold">We&apos;ve got <%= sizes.length %> sizes:</p>
           <ul class="flex justify-evenly">
             <li class="flex flex-col justify-end">
               <a href="<%=sizes[0].url%>">
                 <img class="size-16" src="/images/svg/dog-house.svg" alt="">
-                <p class="text-lg text-center mt-4">
+                <p class="text-lg text-center mt-6">
                   <%= sizes[0].name %>
                 </p>
               </a>
@@ -28,7 +28,7 @@
             <li class="flex flex-col items-center justify-end">
               <a href="<%=sizes[1].url%>">
                 <img class="size-32" src="/images/svg/dog-house.svg" alt="">
-                <p class="text-xl text-center mt-4">
+                <p class="text-xl text-center mt-6">
                   <%= sizes[1].name %>
                 </p>
               </a>
@@ -36,7 +36,7 @@
             <li class="flex flex-col items-center justify-end">
               <a href="<%=sizes[2].url%>">
                 <img class="size-48" src="/images/svg/dog-house.svg" alt="">
-                <p class="text-2xl text-center mt-4">
+                <p class="text-2xl text-center mt-6">
                   <%= sizes[2].name %>
                 </p>
               </a>
@@ -44,7 +44,7 @@
           </ul>
         </li>
         <li class="flex flex-col gap-8 mb-16">
-          <p class="text-xl">We&apos;ve got <%= breeds.length %> breeds:</p>
+          <p class="text-xl font-bold">We&apos;ve got <%= breeds.length %> breeds:</p>
           <ul class="flex justify-evenly">
             <% for(let i=0; i < 3; i+=1){ %>
               <li class="flex flex-col p-8">
@@ -52,7 +52,7 @@
                   <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
                     src="<%= breeds[i].img_url %>" alt="Picture of a <%= breeds[i].name %>">
                 </a>
-                <span class="self-center text-lg mt-4">
+                <span class="self-center text-lg mt-6">
                   <%= breeds[i].name %>
                 </span>
               </li>
@@ -63,7 +63,7 @@
             more!</a>
         </li>
         <li class="flex flex-col gap-8">
-          <p class="text-xl">And of course, we&apos;ve got <%= dogs.length %> beautiful puppers:</p>
+          <p class="text-xl font-bold">And of course, we&apos;ve got <%= dogs.length %> beautiful puppers:</p>
           <ul class="flex justify-evenly">
             <% for(let i=0; i < 3; i+=1){ %>
               <li class="flex flex-col p-8">
@@ -71,7 +71,7 @@
                   <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
                     src="<%= dogs[i].img_url %>" alt="Picture of <%= dogs[i].name %>">
                 </a>
-                <span class="self-center text-lg mt-4">
+                <span class="self-center text-lg mt-6">
                   <%= dogs[i].name %>
                 </span>
               </li>
