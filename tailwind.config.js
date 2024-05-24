@@ -10,6 +10,9 @@ export default {
       fontFamily: {
         goodDog: ['GoodDog', 'Montserrat', 'Helvetica', 'Arial', 'sans-serif'],
       },
+      boxShadow: {
+        blurry: '0 0 4px black',
+      },
     },
   },
   plugins: [],
