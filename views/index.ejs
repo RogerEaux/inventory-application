@@ -62,21 +62,23 @@
             href="/inventory/breeds">See
             more!</a>
         </li>
-        <li>
-          <p>And of course, we&apos;ve got <%= dogs.length %> beautiful puppers:</p>
-          <ul>
+        <li class="flex flex-col gap-8">
+          <p class="text-xl">And of course, we&apos;ve got <%= dogs.length %> beautiful puppers:</p>
+          <ul class="flex justify-evenly">
             <% for(let i=0; i < 3; i+=1){ %>
-              <li>
-                <a href="<%= dogs[i].url %>">
-                  <img src="<%= dogs[i].img_ur %>" alt="Picture of <%= dogs[i].name %>">
+              <li class="flex flex-col p-8">
+                <a class="size-64 rounded-full overflow-clip" href="<%= dogs[i].url %>">
+                  <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
+                    src="<%= dogs[i].img_url %>" alt="Picture of <%= dogs[i].name %>">
                 </a>
-                <span>
+                <span class="self-center text-lg mt-4">
                   <%= dogs[i].name %>
                 </span>
               </li>
               <% }; %>
           </ul>
-          <a href="/inventory/breeds">See more!</a>
+          <a class="self-center py-3 px-6 border-4 border-solid border-black rounded-lg font-bold text-lg transition-all duration-300 hover:bg-black hover:text-white"
+            href="/inventory/breeds">See more!</a>
         </li>
       </ul>
     </main>
