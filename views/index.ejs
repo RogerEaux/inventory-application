@@ -48,7 +48,7 @@
           <ul class="flex justify-evenly">
             <% for(let i=0; i < 3; i+=1){ %>
               <li class="flex flex-col p-8">
-                <a class="size-64 rounded-full shadow-blurry overflow-clip" href=" <%=breeds[i].url %>">
+                <a class="size-56 rounded-full shadow-blurry overflow-clip" href=" <%=breeds[i].url %>">
                   <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
                     src="<%= breeds[i].img_url %>" alt="Picture of a <%= breeds[i].name %>">
                 </a>
@@ -67,7 +67,7 @@
           <ul class="flex justify-evenly">
             <% for(let i=0; i < 3; i+=1){ %>
               <li class="flex flex-col p-8">
-                <a class="size-64 rounded-full shadow-blurry overflow-clip" href="<%= dogs[i].url %>">
+                <a class="size-56 rounded-full shadow-blurry overflow-clip" href="<%= dogs[i].url %>">
                   <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
                     src="<%= dogs[i].img_url %>" alt="Picture of <%= dogs[i].name %>">
                 </a>

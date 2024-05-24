@@ -12,10 +12,10 @@
   <%- include('../general/navBar') %>
     <main class="flex flex-col gap-8 px-16 py-8">
       <h1 class="text-4xl font-bold">Dogs</h1>
-      <ul class="grid grid-cols-[repeat(auto-fit,320px)] justify-center gap-4">
+      <ul class="grid grid-cols-[repeat(auto-fit,calc(224px+4rem))] justify-center gap-4">
         <% dogList.forEach((dog)=> { %>
           <li class="flex flex-col p-8">
-            <a class="size-64 rounded-full shadow-blurry overflow-clip" href="<%= dog.url %>">
+            <a class="size-56 rounded-full shadow-blurry overflow-clip" href="<%= dog.url %>">
               <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
                 src="<%= dog.img_url %>" alt="Picture of <%= dog.name %>">
             </a>
