@@ -8,18 +8,35 @@
   <title>Sizes</title>
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
   <%- include('../general/navBar') %>
-    <main>
-      <h1>Sizes</h1>
-      <ul>
-        <% sizeList.forEach((size)=> { %>
-          <li>
-            <a href="<%=size.url%>">
-              <%= size.name %>
-            </a>
-          </li>
-          <% }); %>
+    <main class="px-16 py-8 flex-1">
+      <h1 class="text-4xl font-bold">Sizes</h1>
+      <ul class="flex justify-evenly">
+        <li class="flex flex-col justify-end">
+          <a href="<%=sizeList[0].url%>">
+            <img class="size-16" src="/images/svg/dog-house.svg" alt="">
+            <p class="text-lg text-center mt-6">
+              <%= sizeList[0].name %>
+            </p>
+          </a>
+        </li>
+        <li class="flex flex-col items-center justify-end">
+          <a href="<%=sizeList[1].url%>">
+            <img class="size-32" src="/images/svg/dog-house.svg" alt="">
+            <p class="text-xl text-center mt-6">
+              <%= sizeList[1].name %>
+            </p>
+          </a>
+        </li>
+        <li class="flex flex-col items-center justify-end">
+          <a href="<%=sizeList[2].url%>">
+            <img class="size-48" src="/images/svg/dog-house.svg" alt="">
+            <p class="text-2xl text-center mt-6">
+              <%= sizeList[2].name %>
+            </p>
+          </a>
+        </li>
       </ul>
     </main>
     <%- include('../general/addendum') %>
