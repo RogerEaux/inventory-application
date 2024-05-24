@@ -8,9 +8,9 @@
   <title>Catadog</title>
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
   <%- include('general/navBar') %>
-    <main class="px-16 py-8">
+    <main class="flex-1 px-16 py-8">
       <h1 class="text-4xl font-bold">Welcome to Catadog</h1>
       <p class="text-center text-2xl my-16">Catadog is an inventory application for a local dog adoption center</p>
       <ul>
@@ -50,7 +50,7 @@
               <li class="flex flex-col p-8">
                 <a class="size-56 rounded-full shadow-blurry overflow-clip" href=" <%=breeds[i].url %>">
                   <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
-                    src="<%= breeds[i].img_url %>" alt="Picture of a <%= breeds[i].name %>">
+                    src="<%= breeds[i].img_ur %>" alt="Picture of a <%= breeds[i].name %>">
                 </a>
                 <span class="self-center text-lg mt-6">
                   <%= breeds[i].name %>
@@ -69,7 +69,7 @@
               <li class="flex flex-col p-8">
                 <a class="size-56 rounded-full shadow-blurry overflow-clip" href="<%= dogs[i].url %>">
                   <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
-                    src="<%= dogs[i].img_url %>" alt="Picture of <%= dogs[i].name %>">
+                    src="<%= dogs[i].img_ur %>" alt="Picture of <%= dogs[i].name %>">
                 </a>
                 <span class="self-center text-lg mt-6">
                   <%= dogs[i].name %>
