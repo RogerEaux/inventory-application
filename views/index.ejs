@@ -14,7 +14,7 @@
       <h1 class="text-4xl font-bold">Welcome to Catadog</h1>
       <p class="text-center text-2xl my-16">Catadog is an inventory application for a local dog adoption center</p>
       <ul>
-        <li class="mb-8">
+        <li class="mb-16">
           <p class="text-xl">We&apos;ve got <%= sizes.length %> sizes:</p>
           <ul class="flex justify-evenly">
             <li class="flex flex-col justify-end">
@@ -43,21 +43,24 @@
             </li>
           </ul>
         </li>
-        <li>
-          <p>We&apos;ve got <%= breeds.length %> breeds:</p>
-          <ul>
+        <li class="flex flex-col gap-8 mb-16">
+          <p class="text-xl">We&apos;ve got <%= breeds.length %> breeds:</p>
+          <ul class="flex justify-evenly">
             <% for(let i=0; i < 3; i+=1){ %>
-              <li>
-                <a href="<%= breeds[i].url %>">
-                  <img src="<%= breeds[i].img_ur %>" alt="Picture of a <%= breeds[i].name %>">
+              <li class="flex flex-col p-8">
+                <a class="size-64 rounded-full overflow-clip" href=" <%=breeds[i].url %>">
+                  <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
+                    src="<%= breeds[i].img_url %>" alt="Picture of a <%= breeds[i].name %>">
                 </a>
-                <span>
+                <span class="self-center text-lg mt-4">
                   <%= breeds[i].name %>
                 </span>
               </li>
               <% }; %>
           </ul>
-          <a href="/inventory/breeds">See more!</a>
+          <a class="self-center py-3 px-6 border-4 border-solid border-black rounded-lg font-bold text-lg transition-all duration-300 hover:bg-black hover:text-white"
+            href="/inventory/breeds">See
+            more!</a>
         </li>
         <li>
           <p>And of course, we&apos;ve got <%= dogs.length %> beautiful puppers:</p>
