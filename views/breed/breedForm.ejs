@@ -12,24 +12,26 @@
 
 <body class="flex flex-col min-h-screen">
   <%- include('../general/navBar') %>
-    <main class="flex-1">
-      <h1>
+    <main class="flex-1 px-16 py-8">
+      <h1 class="text-4xl font-bold">
         <%= title %>
       </h1>
-      <form method="post">
-        <label>
-          <span>*Name: </span>
+      <form method="post" class="flex flex-col gap-4 mt-8">
+        <label class="flex flex-col text-lg gap-2">
+          <span class="font-bold">Name <span class="text-sm text-gray-500">*required</span></span>
           <input required name="name" id="name" type="text" placeholder="Name of breed" value="<%= breed ? breed.name : ''
-            %>">
+            %>"
+            class="transition-all duration-300 p-2 border-2 border-gray-500 rounded-md outline-none focus:border-purple-700">
         </label>
-        <label>
-          <span>*Description: </span>
-          <textarea required name="description" id="description"
-            placeholder="Description of the breed"><%=breed ? breed.description : '' %></textarea>
+        <label class="flex flex-col text-lg">
+          <span class="font-bold">Description <span class="text-sm text-gray-500">*required</span></span>
+          <textarea required name="description" id="description" rows="4" placeholder="Description of the breed"
+            class="transition-all duration-300 p-2 border-2 border-gray-500 rounded-md outline-none focus:border-purple-700"><%=breed ? breed.description : '' %></textarea>
         </label>
-        <label>
-          <span>*Size: </span>
-          <select name="size" id="size" required>
+        <label class="flex flex-col text-lg">
+          <span class="font-bold">Size <span class="text-sm text-gray-500">*required</span></span>
+          <select name="size" id="size" required
+            class="transition-all duration-300 p-2 border-2 border-gray-500 rounded-md outline-none focus:border-purple-700">
             <option value="">--Select a size--</option>
             <% sizes.forEach((size)=> { %>
               <% if(breed) { %>
@@ -50,12 +52,15 @@
                           <% }) %>
           </select>
         </label>
-        <label>
-          <span>*Life expectancy (years): </span>
+        <label class="flex flex-col text-lg">
+          <span class="font-bold">Life Expectancy (years) <span class="text-sm text-gray-500">*required</span></span>
           <input required name="lifeExpectancy" id="lifeExpectancy" type="number" placeholder="Life expectancy of breed"
-            value="<%=breed ? breed.life_expectancy : '' %>">
+            value="<%=breed ? breed.life_expectancy : '' %>"
+            class="transition-all duration-300 p-2 border-2 border-gray-500 rounded-md outline-none focus:border-purple-700">
         </label>
-        <button type="submit">Submit</button>
+        <button
+          class="self-center py-3 px-6 border-4 border-solid border-black rounded-lg mt-8 font-bold text-lg transition-all duration-300 hover:bg-black hover:text-white"
+          type="submit">Submit</button>
       </form>
 
       <% if(errors){ %>
