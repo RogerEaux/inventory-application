@@ -12,33 +12,41 @@
 
 <body>
   <%- include('../general/navBar') %>
-    <main>
-      <h1>
+    <main class="flex flex-col gap-8 px-16 py-8">
+      <h1 class="text-4xl font-bold">
         <%- breed.name %>
       </h1>
-      <p>
+      <p class="text-xl">
         <%- breed.description %>
       </p>
-      <div class="details">
-        <p>
+      <ul class="flex flex-col gap-4 text-lg">
+        <li>
           Size: <%= breed.size.name %>
-        </p>
-        <p>
+        </li>
+        <li>
           Life Expectancy: <%= breed.life_expectancy %> years
-        </p>
-      </div>
-      <h2>Dogs</h2>
-      <ul>
+        </li>
+      </ul>
+      <h2 class="text-2xl font-bold">Dogs</h2>
+      <ul class="grid grid-cols-[repeat(auto-fit,calc(224px+4rem))] justify-center gap-4">
         <% breedDogs.forEach((dog)=> { %>
-          <li>
-            <a href="<%=dog.url%>">
-              <%= dog.name %>
+          <li class="flex flex-col p-8">
+            <a class="size-56 rounded-full shadow-blurry overflow-clip" href="<%= dog.url %>">
+              <img class="rounded-full object-cover transition-all duration-500 hover:scale-125" src="<%= dog.img_ur %>"
+                alt="Picture of <%= dog.name %>">
             </a>
+            <span class="self-center text-lg mt-6">
+              <%= dog.name %>
+            </span>
           </li>
           <% }); %>
       </ul>
-      <a href=<%=`${breed.url}/update`%> >Update Breed</a>
-      <a href=<%=`${breed.url}/delete`%> >Delete Breed</a>
+      <div id="buttons" class="flex justify-center gap-20">
+        <a class="self-center py-3 px-6 border-4 border-solid border-blue-700 rounded-lg font-bold text-lg text-blue-700 transition-all duration-300 hover:bg-blue-700 hover:text-white"
+          href=<%=`${breed.url}/update`%> >Update Breed</a>
+        <a class="self-center py-3 px-6 border-4 border-solid border-red-700 rounded-lg font-bold text-lg text-red-700 transition-all duration-300 hover:bg-red-700 hover:text-white"
+          href=<%=`${breed.url}/delete`%> >Delete Breed</a>
+      </div>
     </main>
     <%- include('../general/addendum') %>
 </body>
