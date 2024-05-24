@@ -22,6 +22,17 @@
   font-family: Montserrat, Helvetica, Arial, sans-serif;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding: 32px 64px;
+}
+
 @layer components {
   .round-img {
     @apply transition-all duration-500 rounded-full object-cover hover:scale-125;
@@ -33,5 +44,13 @@
 
   .button {
     @apply self-center py-3 px-6 border-4 border-solid rounded-lg font-bold text-lg transition-all duration-300 hover:text-white;
+  }
+
+  .form-item {
+    @apply flex flex-col text-lg gap-2;
+  }
+
+  .form-input {
+    @apply transition-all duration-300 p-2 border-2 border-gray-500 rounded-md outline-none focus:border-purple-700;
   }
 }
