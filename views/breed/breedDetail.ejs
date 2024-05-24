@@ -13,6 +13,8 @@
 <body>
   <%- include('../general/navBar') %>
     <main class="flex flex-col gap-8 px-16 py-8">
+      <img class="self-center size-96 rounded-full shadow-blurry " src="<%= breed.img_ur %>"
+        alt="Picture of <%= breed.name %>">
       <h1 class="text-4xl font-bold">
         <%- breed.name %>
       </h1>
