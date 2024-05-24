@@ -12,20 +12,24 @@
 
 <body>
   <%- include('../general/navBar') %>
-    <main>
-      <h1>
+    <main class="flex flex-col gap-8 px-16 py-8">
+      <h1 class="text-4xl font-bold">
         <%= size.name %>
       </h1>
-      <p>
+      <p class="text-xl">
         <%= size.description %>
       </p>
-      <h2>Breeds</h2>
-      <ul>
+      <h2 class="text-2xl font-bold">Breeds</h2>
+      <ul class="grid grid-cols-[repeat(auto-fit,calc(224px+4rem))] justify-center gap-4">
         <% sizeBreeds.forEach((breed)=> { %>
-          <li>
-            <a href="<%=breed.url%>">
-              <%= breed.name %>
+          <li class="flex flex-col p-8">
+            <a class="size-56 rounded-full shadow-blurry overflow-clip" href=" <%=breed.url %>">
+              <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
+                src="<%-breed.img_ur %>" alt="Picture of a <%= breed.name %>">
             </a>
+            <span class="self-center text-lg mt-6">
+              <%= breed.name %>
+            </span>
           </li>
           <% }); %>
       </ul>
