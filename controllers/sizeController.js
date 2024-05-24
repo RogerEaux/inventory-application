@@ -11,7 +11,7 @@ export const sizeList = asyncHandler(async (req, res, next) => {
 export const sizeDetail = asyncHandler(async (req, res, next) => {
   const [size, sizeBreeds] = await Promise.all([
     Size.findById(req.params.id).exec(),
-    Breed.find({ size: req.params.id }, 'name'),
+    Breed.find({ size: req.params.id }, 'name img_url'),
   ]);
 
   if (size === null) {

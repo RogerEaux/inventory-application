@@ -43,7 +43,7 @@ export const breedList = asyncHandler(async (req, res, next) => {
 export const breedDetail = asyncHandler(async (req, res, next) => {
   const [breed, breedDogs] = await Promise.all([
     Breed.findById(req.params.id).populate('size').exec(),
-    Dog.find({ breed: req.params.id }, 'name'),
+    Dog.find({ breed: req.params.id }, 'name img_url'),
   ]);
 
   if (breed === null) {
