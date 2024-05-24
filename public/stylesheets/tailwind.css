@@ -30,4 +30,8 @@
   .round-link {
     @apply size-56 rounded-full shadow-blurry overflow-clip;
   }
+
+  .button {
+    @apply self-center py-3 px-6 border-4 border-solid rounded-lg font-bold text-lg transition-all duration-300 hover:text-white;
+  }
 }
