@@ -10,18 +10,23 @@
 
 <body>
   <%- include('../general/navBar') %>
-    <main>
-      <h1>Breeds</h1>
-      <ul>
+    <main class="flex flex-col gap-8 px-16 py-8">
+      <h1 class="text-4xl font-bold">Breeds</h1>
+      <ul class="grid grid-cols-[repeat(auto-fit,320px)] justify-center gap-4">
         <% breedList.forEach((breed)=> { %>
-          <li>
-            <a href="<%=breed.url%>">
-              <%= breed.name %>
+          <li class="flex flex-col p-8">
+            <a class="size-64 rounded-full shadow-blurry overflow-clip" href=" <%=breed.url %>">
+              <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
+                src="<%-breed.img_url %>" alt="Picture of a <%= breed.name %>">
             </a>
+            <span class="self-center text-lg mt-6">
+              <%= breed.name %>
+            </span>
           </li>
           <% }); %>
       </ul>
-      <a href="/inventory/breed/create">Create Breed</a>
+      <a class="self-center py-3 px-6 border-4 border-solid border-black rounded-lg font-bold text-lg transition-all duration-300 hover:bg-black hover:text-white"
+        href="/inventory/breed/create">Create Breed</a>
     </main>
     <%- include('../general/addendum') %>
 </body>

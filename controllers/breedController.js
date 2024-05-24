@@ -33,7 +33,9 @@ const breedValidation = [
 ];
 
 export const breedList = asyncHandler(async (req, res, next) => {
-  const breedList = await Breed.find({}, 'name').sort({ name: 1 }).exec();
+  const breedList = await Breed.find({}, 'name img_url')
+    .sort({ name: 1 })
+    .exec();
 
   res.render('breed/breedList', { breedList });
 });
