@@ -43,7 +43,7 @@ const dogValidation = [
 ];
 
 export const dogList = asyncHandler(async (req, res, next) => {
-  const dogList = await Dog.find({}, 'name').sort({ name: 1 }).exec();
+  const dogList = await Dog.find({}, 'name img_url').sort({ name: 1 }).exec();
 
   res.render('dog/dogList', { dogList });
 });
