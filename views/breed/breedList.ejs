@@ -17,7 +17,7 @@
           <li class="flex flex-col p-8">
             <a class="size-56 rounded-full shadow-blurry overflow-clip" href=" <%=breed.url %>">
               <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
-                src="<%-breed.img_url %>" alt="Picture of a <%= breed.name %>">
+                src="<%-breed.img_ur %>" alt="Picture of a <%= breed.name %>">
             </a>
             <span class="self-center text-lg mt-6">
               <%= breed.name %>
@@ -25,7 +25,7 @@
           </li>
           <% }); %>
       </ul>
-      <a class="self-center py-3 px-6 border-4 border-solid border-black rounded-lg font-bold text-lg transition-all duration-300 hover:bg-black hover:text-white"
+      <a class="self-center py-3 px-6 border-4 border-solid border-green-700 rounded-lg font-bold text-lg text-green-700 transition-all duration-300 hover:bg-green-700 hover:text-white"
         href="/inventory/breed/create">Create Breed</a>
     </main>
     <%- include('../general/addendum') %>
