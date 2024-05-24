@@ -21,3 +21,13 @@
 :root {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
 }
+
+@layer components {
+  .round-img {
+    @apply transition-all duration-500 rounded-full object-cover hover:scale-125;
+  }
+
+  .round-link {
+    @apply size-56 rounded-full shadow-blurry overflow-clip;
+  }
+}

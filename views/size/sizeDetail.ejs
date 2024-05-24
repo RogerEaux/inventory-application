@@ -23,9 +23,8 @@
       <ul class="grid grid-cols-[repeat(auto-fit,calc(224px+4rem))] justify-center gap-4">
         <% sizeBreeds.forEach((breed)=> { %>
           <li class="flex flex-col p-8">
-            <a class="size-56 rounded-full shadow-blurry overflow-clip" href=" <%=breed.url %>">
-              <img class="rounded-full object-cover transition-all duration-500 hover:scale-125"
-                src="<%-breed.img_ur %>" alt="Picture of a <%= breed.name %>">
+            <a class="round-link" href=" <%=breed.url %>">
+              <img class="round-img" src="<%-breed.img_ur %>" alt="Picture of a <%= breed.name %>">
             </a>
             <span class="self-center text-lg mt-6">
               <%= breed.name %>
