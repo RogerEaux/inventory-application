@@ -25,12 +25,24 @@
 body {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 main {
   flex: 1;
   padding: 32px 64px;
+}
+
+@media (max-width: 1023px) {
+  main {
+    padding: 32px 48px;
+  }
+}
+
+@media (max-width: 639px) {
+  main {
+    padding: 32px;
+  }
 }
 
 @layer components {
