@@ -43,6 +43,20 @@ const dogValidation = [
     .withMessage('Height must not be empty')
     .isNumeric({ min: 0 })
     .withMessage('Height must be a number greater than 0'),
+
+  body('password')
+    .trim()
+    .notEmpty()
+    .escape()
+    .withMessage('Password must be provided')
+    .custom((value) => {
+      console.log(value);
+      if (value !== process.env.PASSWORD) {
+        throw new Error('Incorrect password');
+      } else {
+        return value;
+      }
+    }),
 ];
 
 export const dogList = asyncHandler(async (req, res, next) => {
@@ -82,14 +96,14 @@ export const dogCreatePost = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
 
-    let imgURL;
+    let imgURL =
+      'https://res.cloudinary.com/dyoh1algd/image/upload/v1716599228/dog_egrxor.svg';
 
     if (req.file) {
-      imgURL = await cloudUpload(req.file.path);
+      if (req.body.password === process.env.PASSWORD) {
+        imgURL = await cloudUpload(req.file.path);
+      }
       await fs.unlink(req.file.path);
-    } else {
-      imgURL =
-        'https://res.cloudinary.com/dyoh1algd/image/upload/v1716599228/dog_egrxor.svg';
     }
 
     const newDog = {
@@ -158,14 +172,13 @@ export const dogUpdatePost = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
 
-    let imgURL;
+    let imgURL = await Dog.findById(req.params.id, 'img_url').exec().img_url;
 
     if (req.file) {
-      imgURL = await cloudUpload(req.file.path);
+      if (req.body.password === process.env.PASSWORD) {
+        imgURL = await cloudUpload(req.file.path);
+      }
       await fs.unlink(req.file.path);
-    } else {
-      const dog = await Dog.findById(req.params.id, 'img_url').exec();
-      imgURL = dog.img_url;
     }
 
     const newDog = {
