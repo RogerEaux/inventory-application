@@ -10,14 +10,24 @@
 
 <body>
   <%- include('../general/navBar') %>
-    <main>">
-      <h1>
+    <main class="flex flex-col gap-8">
+      <h1 class="font-bold text-4xl">
         Delete <%= breed.name %>?
       </h1>
-
+      <p class="text-xl">
+        <%- breed.description %>
+      </p>
+      <ul class="flex flex-col gap-4 text-lg">
+        <li>
+          Size: <%= breed.size.name %>
+        </li>
+        <li>
+          Life Expectancy: <%= breed.life_expectancy %> years
+        </li>
+      </ul>
       <% if(breedDogs.length> 0){ %>
-        <h2>This will also delete all these beautiful dogs:</h2>
-        <ul>
+        <h2 class="font-bold text-2xl">This will also delete all these beautiful dogs:</h2>
+        <ul class="flex flex-col gap-4 text-lg">
           <% breedDogs.forEach((dog)=> { %>
             <li>
               <a href="<%=dog.url%>">
@@ -27,9 +37,9 @@
             <% }); %>
         </ul>
         <% } %>
-          <form method="post">
+          <form method="post" class="flex flex-col">
             <input name="breedID" id="breedID" type="hidden" value=<%=breed._id%>>
-            <button type="submit">Delete</button>
+            <button type="submit" class="button border-red-700 text-red-700 hover:bg-red-700">Delete</button>
           </form>
     </main>
     <%- include('../general/addendum') %>

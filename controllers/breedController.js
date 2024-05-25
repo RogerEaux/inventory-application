@@ -113,7 +113,7 @@ export const breedCreatePost = [
 
 export const breedDeleteGet = asyncHandler(async (req, res, next) => {
   const [breed, breedDogs] = await Promise.all([
-    Breed.findById(req.params.id).exec(),
+    Breed.findById(req.params.id).populate('size').exec(),
     Dog.find({ breed: req.params.id }, 'name').sort({ name: 1 }).exec(),
   ]);
 
