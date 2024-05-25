@@ -14,12 +14,12 @@
 <body>
   <%- include('../general/navBar') %>
     <main class="flex flex-col gap-8">
-      <img class="self-center size-96 rounded-full shadow-blurry" src="<%= dog.img_ur %>"
+      <img class="self-center size-96 rounded-full shadow-blurry sm:size-64" src="<%= dog.img_ur %>"
         alt="Picture of <%= dog.name %>">
-      <h1 class="text-4xl font-bold">
+      <h1 class="title">
         <%- dog.name %>
       </h1>
-      <ul class="flex flex-col gap-4 text-lg">
+      <ul class="flex flex-col gap-4 text-lg sm:text-base">
         <li>
           <span class="font-bold">Breed: </span>
           <a href="<%=dog.breed.url%>" class="underline-offset-4 hover:underline">
@@ -45,8 +45,9 @@
           </span>
         </li>
       </ul>
-      <div id="buttons" class="flex justify-center gap-20">
-        <a class="button border-blue-700 text-blue-700 hover:bg-blue-700" href=<%=`${dog.url}/update`%> >Update Dog</a>
+      <div id="buttons" class="flex justify-center gap-20 sm:flex-col sm:gap-10"">
+        <a class=" button border-blue-700 text-blue-700 hover:bg-blue-700" href=<%=`${dog.url}/update`%> >Update
+        Dog</a>
         <a class="button border-red-700 text-red-700 hover:bg-red-700" href=<%=`${dog.url}/delete`%> >Delete Dog</a>
       </div>
     </main>
