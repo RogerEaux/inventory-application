@@ -33,6 +33,20 @@ const breedValidation = [
     .withMessage('Life expectancy must not be empty')
     .isNumeric({ min: 0 })
     .withMessage('Life expectancy must be a number greater than 0'),
+
+  body('password')
+    .trim()
+    .notEmpty()
+    .escape()
+    .withMessage('Password must be provided')
+    .custom((value) => {
+      console.log(value);
+      if (value !== process.env.PASSWORD) {
+        throw new Error('Incorrect password');
+      } else {
+        return value;
+      }
+    }),
 ];
 
 export const breedList = asyncHandler(async (req, res, next) => {
@@ -80,7 +94,12 @@ export const breedCreatePost = [
     let imgURL;
 
     if (req.file) {
-      imgURL = await cloudUpload(req.file.path);
+      if (req.body.password === process.env.PASSWORD) {
+        imgURL = await cloudUpload(req.file.path);
+      } else {
+        imgURL =
+          'https://res.cloudinary.com/dyoh1algd/image/upload/v1716599228/dog_egrxor.svg';
+      }
       await fs.unlink(req.file.path);
     } else {
       imgURL =
@@ -161,7 +180,11 @@ export const breedUpdatePost = [
     let imgURL;
 
     if (req.file) {
-      imgURL = await cloudUpload(req.file.path);
+      if (req.body.password === process.env.PASSWORD) {
+        imgURL = await cloudUpload(req.file.path);
+      } else {
+        imgURL = breed.img_url;
+      }
       await fs.unlink(req.file.path);
     } else {
       const breed = await Breed.findById(req.params.id, 'img_url').exec();
