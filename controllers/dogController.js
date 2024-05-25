@@ -121,7 +121,7 @@ export const dogCreatePost = [
 ];
 
 export const dogDeleteGet = asyncHandler(async (req, res, next) => {
-  const dog = await Dog.findById(req.params.id).exec();
+  const dog = await Dog.findById(req.params.id).populate('breed').exec();
 
   if (!dog) {
     res.redirect('/inventory/dogs');
