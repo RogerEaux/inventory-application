@@ -16,17 +16,16 @@
       <ul class="grid grid-cols-[repeat(auto-fit,calc(224px+4rem))] justify-center gap-4">
         <% breedList.forEach((breed)=> { %>
           <li class="flex flex-col p-8">
-            <a class="round-link lg:self-center sm:size-48" href=" <%=breed.url %>">
+            <a class="round-link" href=" <%=breed.url %>">
               <img class="round-img" src="<%-breed.img_ur %>" alt="Picture of a <%= breed.name %>">
             </a>
-            <span class="self-center text-lg mt-6 sm:text-base">
+            <span class="round-img-text">
               <%= breed.name %>
             </span>
           </li>
           <% }); %>
       </ul>
-      <a class="button border-green-700 text-green-700 hover:bg-green-700 sm:text-base"
-        href="/inventory/breed/create">Create
+      <a class="button border-green-700 text-green-700 hover:bg-green-700" href="/inventory/breed/create">Create
         Breed</a>
     </main>
     <%- include('../general/addendum') %>

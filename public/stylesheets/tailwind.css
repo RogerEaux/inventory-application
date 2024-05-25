@@ -54,6 +54,10 @@ main {
     @apply size-56 rounded-full shadow-blurry overflow-clip lg:self-center sm:size-48;
   }
 
+  .round-img-text {
+    @apply self-center text-lg mt-6 sm:text-base;
+  }
+
   .button {
     @apply self-center py-3 px-6 border-4 border-solid rounded-lg font-bold text-lg transition-all duration-300 hover:text-white sm:text-base;
   }
