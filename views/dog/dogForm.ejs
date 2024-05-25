@@ -60,6 +60,11 @@
           <input name="height" id="height" type="number" placeholder="Height of dog" step="any" min="0"
             value="<%=dog ? dog.height : '' %>" class="form-input">
         </label>
+        <label class="form-item">
+          <span class="font-bold">Image</span>
+          <input name="img" id="img" type="file" accept="image/*"
+            class=" border-dashed border-2 border-gray-500 py-4 px-2">
+        </label>
         <button type="submit" class="button border-black hover:bg-black mt-8">Submit</button>
       </form>
 
