@@ -13,32 +13,33 @@
 <body>
   <%- include('general/navBar') %>
     <main>
-      <h1 class="text-4xl font-bold">Welcome to Catadog</h1>
-      <p class="text-center text-2xl my-16">Catadog is an inventory application for a local dog adoption center</p>
+      <h1 class="title">Welcome to Catadog</h1>
+      <p class="text-center text-2xl my-16 sm:text-xl sm:mt-8">Catadog is an inventory application for a local dog
+        adoption center</p>
       <ul>
-        <li class="mb-16">
-          <p class="text-xl font-bold">We&apos;ve got <%= sizes.length %> sizes:</p>
-          <ul class="flex justify-evenly">
-            <li class="flex flex-col justify-end">
+        <li class="flex flex-col gap-8 mb-16">
+          <p class="text-xl font-bold sm:text-lg">We&apos;ve got <%= sizes.length %> sizes:</p>
+          <ul class="flex justify-evenly sm:flex-col">
+            <li class="flex flex-col justify-end sm:self-center">
               <a href="<%=sizes[0].url%>">
                 <img class="size-16" src="/svgs/dog-house.svg" alt="">
-                <p class="text-lg text-center mt-6">
+                <p class="text-lg text-center mt-6 sm:text-base">
                   <%= sizes[0].name %>
                 </p>
               </a>
             </li>
-            <li class="flex flex-col justify-end">
+            <li class="flex flex-col justify-end sm:self-center">
               <a href="<%=sizes[1].url%>">
                 <img class="size-32" src="/svgs/dog-house.svg" alt="">
-                <p class="text-xl text-center mt-6">
+                <p class="text-xl text-center mt-6 sm:text-base">
                   <%= sizes[1].name %>
                 </p>
               </a>
             </li>
-            <li class="flex flex-col justify-end">
+            <li class="flex flex-col justify-end sm:self-center">
               <a href="<%=sizes[2].url%>">
                 <img class="size-48" src="/svgs/dog-house.svg" alt="">
-                <p class="text-2xl text-center mt-6">
+                <p class="text-2xl text-center mt-6 sm:text-base">
                   <%= sizes[2].name %>
                 </p>
               </a>
@@ -46,37 +47,38 @@
           </ul>
         </li>
         <li class="flex flex-col gap-8 mb-16">
-          <p class="text-xl font-bold">We&apos;ve got <%= breeds.length %> breeds:</p>
-          <ul class="flex justify-evenly">
+          <p class="text-xl font-bold sm:text-lg">We&apos;ve got <%= breeds.length %> breeds:</p>
+          <ul class="flex justify-evenly lg:flex-col">
             <% for(let i=0; i < 3; i+=1){ %>
               <li class="flex flex-col p-8">
-                <a class="round-link" href=" <%=breeds[i].url %>">
+                <a class="round-link lg:self-center sm:size-48" href=" <%=breeds[i].url %>">
                   <img class="round-img" src="<%= breeds[i].img_ur %>" alt="Picture of a <%= breeds[i].name %>">
                 </a>
-                <span class="self-center text-lg mt-6">
+                <span class="self-center text-lg mt-6 sm:text-base">
                   <%= breeds[i].name %>
                 </span>
               </li>
               <% }; %>
           </ul>
-          <a class="button border-black hover:bg-black" href="/inventory/breeds">See
+          <a class="button border-black hover:bg-black sm:text-base" href="/inventory/breeds">See
             more!</a>
         </li>
         <li class="flex flex-col gap-8">
-          <p class="text-xl font-bold">And of course, we&apos;ve got <%= dogs.length %> beautiful puppers:</p>
-          <ul class="flex justify-evenly">
+          <p class="text-xl font-bold sm:text-lg">And of course, we&apos;ve got <%= dogs.length %> beautiful puppers:
+          </p>
+          <ul class="flex justify-evenly lg:flex-col">
             <% for(let i=0; i < 3; i+=1){ %>
               <li class="flex flex-col p-8">
-                <a class="round-link" href="<%= dogs[i].url %>">
+                <a class="round-link lg:self-center sm:size-48" href="<%= dogs[i].url %>">
                   <img class="round-img" src="<%= dogs[i].img_ur %>" alt="Picture of <%= dogs[i].name %>">
                 </a>
-                <span class="self-center text-lg mt-6">
+                <span class="self-center text-lg mt-6 sm:text-base">
                   <%= dogs[i].name %>
                 </span>
               </li>
               <% }; %>
           </ul>
-          <a class="button border-black hover:bg-black" href="/inventory/breeds">See more!</a>
+          <a class="button border-black hover:bg-black sm:text-base" href="/inventory/breeds">See more!</a>
         </li>
       </ul>
     </main>
