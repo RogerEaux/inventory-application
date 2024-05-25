@@ -65,4 +65,8 @@ main {
   .form-input {
     @apply transition-all duration-300 p-2 border-2 border-gray-500 rounded-md outline-none focus:border-purple-700;
   }
+
+  .title {
+    @apply text-4xl font-bold sm:text-3xl sm:text-center;
+  }
 }
