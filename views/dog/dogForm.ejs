@@ -65,18 +65,17 @@
           <input name="img" id="img" type="file" accept="image/*"
             class=" border-dashed border-2 border-gray-500 py-4 px-2">
         </label>
-        <button type="submit" class="button border-black hover:bg-black mt-8">Submit</button>
+        <% if(errors){ %>
+          <ul>
+            <% errors.forEach((error)=> { %>
+              <li class="font-bold text-lg text-red-700">
+                <%= error.msg %>
+              </li>
+              <% }) %>
+          </ul>
+          <% } %>
+            <button type="submit" class="button border-black hover:bg-black mt-8">Submit</button>
       </form>
-
-      <% if(errors){ %>
-        <ul>
-          <% errors.forEach((error)=> { %>
-            <li>
-              <%= error.msg %>
-            </li>
-            <% }) %>
-        </ul>
-        <% } %>
     </main>
     <%- include('../general/addendum') %>
 </body>
