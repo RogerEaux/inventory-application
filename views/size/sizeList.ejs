@@ -12,28 +12,28 @@
 <body>
   <%- include('../general/navBar') %>
     <main>
-      <h1 class="text-4xl font-bold">Sizes</h1>
-      <ul class="flex justify-evenly">
-        <li class="flex flex-col justify-end">
+      <h1 class="title mb-8">Sizes</h1>
+      <ul class="flex justify-evenly sm:flex-col">
+        <li class="flex flex-col justify-end sm:self-center">
           <a href="<%=sizeList[0].url%>">
             <img class="size-16" src="/svgs/dog-house.svg" alt="">
-            <p class="text-lg text-center mt-6">
+            <p class="text-lg text-center mt-6 sm:text-base">
               <%= sizeList[0].name %>
             </p>
           </a>
         </li>
-        <li class="flex flex-col items-center justify-end">
+        <li class="flex flex-col justify-end sm:self-center">
           <a href="<%=sizeList[1].url%>">
             <img class="size-32" src="/svgs/dog-house.svg" alt="">
-            <p class="text-xl text-center mt-6">
+            <p class="text-xl text-center mt-6 sm:text-base">
               <%= sizeList[1].name %>
             </p>
           </a>
         </li>
-        <li class="flex flex-col items-center justify-end">
+        <li class="flex flex-col justify-end sm:self-center">
           <a href="<%=sizeList[2].url%>">
             <img class="size-48" src="/svgs/dog-house.svg" alt="">
-            <p class="text-2xl text-center mt-6">
+            <p class="text-2xl text-center mt-6 sm:text-base">
               <%= sizeList[2].name %>
             </p>
           </a>
