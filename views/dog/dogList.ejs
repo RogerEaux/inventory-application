@@ -15,7 +15,7 @@
       <h1 class="title">Dogs</h1>
       <ul class="grid grid-cols-[repeat(auto-fit,calc(224px+4rem))] justify-center gap-4">
         <% dogList.forEach((dog)=> { %>
-          <li class="flex flex-col p-8">
+          <li class="flex flex-col p-8 sm:p-4">
             <a class="round-link" href="<%= dog.url %>">
               <img class="round-img" src="<%= dog.img_ur %>" alt="Picture of <%= dog.name %>">
             </a>
