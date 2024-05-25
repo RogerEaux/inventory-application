@@ -55,9 +55,12 @@
           <input required name="lifeExpectancy" id="lifeExpectancy" type="number" placeholder="Life expectancy of breed"
             value="<%=breed ? breed.life_expectancy : '' %>" class="form-input">
         </label>
-        <button
-          class="self-center py-3 px-6 border-4 border-solid border-black rounded-lg mt-8 font-bold text-lg transition-all duration-300 hover:bg-black hover:text-white"
-          type="submit">Submit</button>
+        <label class="form-item">
+          <span class="font-bold">Image</span>
+          <input name="img" id="img" type="file" accept="image/*"
+            class=" border-dashed border-2 border-gray-500 py-4 px-2">
+        </label>
+        <button class="button border-black hover:bg-black mt-8" type="submit">Submit</button>
       </form>
 
       <% if(errors){ %>
