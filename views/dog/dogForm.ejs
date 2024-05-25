@@ -66,6 +66,10 @@
           <input name="img" id="img" type="file" accept="image/*"
             class=" border-dashed border-2 border-gray-500 py-4 px-2">
         </label>
+        <label class="form-item">
+          <span class="font-bold">Password <span class="text-sm text-gray-500">*required</span></span>
+          <input required name="password" id="password" type="text" placeholder="Secret password" class="form-input">
+        </label>
         <% if(errors){ %>
           <ul>
             <% errors.forEach((error)=> { %>
