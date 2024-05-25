@@ -14,10 +14,10 @@
 <body>
   <%- include('../general/navBar') %>
     <main class="flex flex-col gap-8">
-      <h1 class="text-4xl font-bold">
+      <h1 class="title">
         <%= size.name %>
       </h1>
-      <p class="text-xl">
+      <p class="text-xl sm:text-lg sm:text-center">
         <%= size.description %>
       </p>
       <h2 class="text-2xl font-bold">Breeds - <%= sizeBreeds.length %>
@@ -28,7 +28,7 @@
             <a class="round-link" href=" <%=breed.url %>">
               <img class="round-img" src="<%-breed.img_ur %>" alt="Picture of a <%= breed.name %>">
             </a>
-            <span class="self-center text-lg mt-6">
+            <span class="round-img-text">
               <%= breed.name %>
             </span>
           </li>
