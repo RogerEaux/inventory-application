@@ -3,6 +3,7 @@ import Breed from '../models/breed.js';
 import Dog from '../models/dog.js';
 import asyncHandler from 'express-async-handler';
 import { body, validationResult } from 'express-validator';
+import upload from '../utils/multer.js';
 import cloudUpload from '../utils/cloudinary.js';
 import fs from 'fs/promises';
 
@@ -69,6 +70,8 @@ export const breedCreateGet = asyncHandler(async (req, res, next) => {
 });
 
 export const breedCreatePost = [
+  upload.single('img'),
+
   ...breedValidation,
 
   asyncHandler(async (req, res, next) => {
@@ -148,6 +151,8 @@ export const breedUpdateGet = asyncHandler(async (req, res, next) => {
 });
 
 export const breedUpdatePost = [
+  upload.single('img'),
+
   ...breedValidation,
 
   asyncHandler(async (req, res, next) => {
