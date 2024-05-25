@@ -3,6 +3,8 @@ import Breed from '../models/breed.js';
 import Dog from '../models/dog.js';
 import asyncHandler from 'express-async-handler';
 import { body, validationResult } from 'express-validator';
+import cloudUpload from '../utils/cloudinary.js';
+import fs from 'fs/promises';
 
 const breedValidation = [
   body('name')
@@ -72,11 +74,22 @@ export const breedCreatePost = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
 
+    let imgURL;
+
+    if (req.file) {
+      imgURL = await cloudUpload(req.file.path);
+      await fs.unlink(req.file.path);
+    } else {
+      imgURL =
+        'https://res.cloudinary.com/dyoh1algd/image/upload/v1716599228/dog_egrxor.svg';
+    }
+
     const breed = new Breed({
       name: req.body.name,
       description: req.body.description,
       size: req.body.size,
       life_expectancy: req.body.lifeExpectancy,
+      img_url: imgURL,
     });
 
     if (!errors.isEmpty()) {
@@ -140,11 +153,22 @@ export const breedUpdatePost = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
 
+    let imgURL;
+
+    if (req.file) {
+      imgURL = await cloudUpload(req.file.path);
+      await fs.unlink(req.file.path);
+    } else {
+      const breed = await Breed.findById(req.params.id, 'img_url').exec();
+      imgURL = breed.img_url;
+    }
+
     const breed = new Breed({
       name: req.body.name,
       description: req.body.description,
       size: req.body.size,
       life_expectancy: req.body.lifeExpectancy,
+      img_url: imgURL,
       _id: req.params.id,
     });
 
