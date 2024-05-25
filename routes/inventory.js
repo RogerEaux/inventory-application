@@ -6,6 +6,7 @@ import Dog from '../models/dog.js';
 import * as sizeController from '../controllers/sizeController.js';
 import * as breedController from '../controllers/breedController.js';
 import * as dogController from '../controllers/dogController.js';
+import upload from '../utils/multer.js';
 
 const router = Router();
 
@@ -32,13 +33,21 @@ router.get('/sizes', sizeController.sizeList);
 // Breed Routes
 
 router.get('/breed/create', breedController.breedCreateGet);
-router.post('/breed/create', breedController.breedCreatePost);
+router.post(
+  '/breed/create',
+  upload.single('img'),
+  breedController.breedCreatePost
+);
 
 router.get('/breed/:id/delete', breedController.breedDeleteGet);
 router.post('/breed/:id/delete', breedController.breedDeletePost);
 
 router.get('/breed/:id/update', breedController.breedUpdateGet);
-router.post('/breed/:id/update', breedController.breedUpdatePost);
+router.post(
+  '/breed/:id/update',
+  upload.single('img'),
+  breedController.breedUpdatePost
+);
 
 router.get('/breed/:id', breedController.breedDetail);
 router.get('/breeds', breedController.breedList);
@@ -46,13 +55,17 @@ router.get('/breeds', breedController.breedList);
 // Dog Routes
 
 router.get('/dog/create', dogController.dogCreateGet);
-router.post('/dog/create', dogController.dogCreatePost);
+router.post('/dog/create', upload.single('img'), dogController.dogCreatePost);
 
 router.get('/dog/:id/delete', dogController.dogDeleteGet);
 router.post('/dog/:id/delete', dogController.dogDeletePost);
 
 router.get('/dog/:id/update', dogController.dogUpdateGet);
-router.post('/dog/:id/update', dogController.dogUpdatePost);
+router.post(
+  '/dog/:id/update',
+  upload.single('img'),
+  dogController.dogUpdatePost
+);
 
 router.get('/dog/:id', dogController.dogDetail);
 router.get('/dogs', dogController.dogList);
