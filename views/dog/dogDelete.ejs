@@ -29,9 +29,18 @@
           Height: <%= dog.height ? `${dog.height} cm` : 'N/A' %>
         </li>
       </ul>
-      <form method="post" class="flex flex-col">
+      <form method="post" class="flex flex-col gap-4">
         <input name="dogID" id="dogID" type="hidden" value=<%=dog._id%>>
-        <button type="submit" class="button border-red-700 text-red-700 hover:bg-red-700 mt-8">Delete</button>
+        <label class="form-item">
+          <span class="font-bold">Password <span class="text-sm text-gray-500">*required</span></span>
+          <input required name="password" id="password" type="text" placeholder="Secret password" class="form-input">
+        </label>
+        <% if(errors){ %>
+          <p class="font-bold text-lg text-red-700">
+            <%= errors[0].msg %>
+          </p>
+          <% } %>
+            <button type="submit" class="button border-red-700 text-red-700 hover:bg-red-700 mt-8">Delete</button>
       </form>
     </main>
     <%- include('../general/addendum') %>
