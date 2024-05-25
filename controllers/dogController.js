@@ -2,6 +2,9 @@ import Breed from '../models/breed.js';
 import Dog from '../models/dog.js';
 import asyncHandler from 'express-async-handler';
 import { body, validationResult } from 'express-validator';
+import upload from '../utils/multer.js';
+import cloudUpload from '../utils/cloudinary.js';
+import fs from 'fs/promises';
 
 const dogValidation = [
   body('name')
@@ -72,14 +75,27 @@ export const dogCreateGet = asyncHandler(async (req, res, next) => {
 });
 
 export const dogCreatePost = [
+  upload.single('img'),
+
   ...dogValidation,
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
 
+    let imgURL;
+
+    if (req.file) {
+      imgURL = await cloudUpload(req.file.path);
+      await fs.unlink(req.file.path);
+    } else {
+      imgURL =
+        'https://res.cloudinary.com/dyoh1algd/image/upload/v1716599228/dog_egrxor.svg';
+    }
+
     const newDog = {
       name: req.body.name,
       breed: req.body.breed,
+      img_url: imgURL,
     };
 
     req.body.age ? (newDog.age = req.body.age) : null;
@@ -135,14 +151,27 @@ export const dogUpdateGet = asyncHandler(async (req, res, next) => {
 });
 
 export const dogUpdatePost = [
+  upload.single('img'),
+
   ...dogValidation,
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
 
+    let imgURL;
+
+    if (req.file) {
+      imgURL = await cloudUpload(req.file.path);
+      await fs.unlink(req.file.path);
+    } else {
+      const dog = await Dog.findById(req.params.id, 'img_url').exec();
+      imgURL = dog.img_url;
+    }
+
     const newDog = {
       name: req.body.name,
       breed: req.body.breed,
+      img_url: imgURL,
       _id: req.params.id,
     };
 
