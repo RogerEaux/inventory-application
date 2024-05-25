@@ -141,13 +141,40 @@ export const dogDeleteGet = asyncHandler(async (req, res, next) => {
     res.redirect('/inventory/dogs');
   }
 
-  res.render('dog/dogDelete', { dog });
+  res.render('dog/dogDelete', { dog, errors: null });
 });
 
-export const dogDeletePost = asyncHandler(async (req, res, next) => {
-  await Dog.findByIdAndDelete(req.body.dogID).exec();
-  res.redirect('/inventory/dogs');
-});
+export const dogDeletePost = [
+  body('password')
+    .trim()
+    .notEmpty()
+    .escape()
+    .withMessage('Password must be provided')
+    .custom((value) => {
+      console.log(value);
+      if (value !== process.env.PASSWORD) {
+        throw new Error('Incorrect password');
+      } else {
+        return value;
+      }
+    }),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      const dog = await Dog.findById(req.params.id).populate('breed').exec();
+
+      res.render('dog/dogDelete', {
+        dog,
+        errors: errors.array(),
+      });
+    } else {
+      await Dog.findByIdAndDelete(req.body.dogID).exec();
+      res.redirect('/inventory/dogs');
+    }
+  }),
+];
 
 export const dogUpdateGet = asyncHandler(async (req, res, next) => {
   const [dog, breeds] = await Promise.all([
