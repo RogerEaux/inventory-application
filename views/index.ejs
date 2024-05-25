@@ -52,7 +52,7 @@
             <% for(let i=0; i < 3; i+=1){ %>
               <li class="flex flex-col p-8">
                 <a class="round-link" href=" <%=breeds[i].url %>">
-                  <img class="round-img" src="<%= breeds[i].img_ur %>" alt="Picture of a <%= breeds[i].name %>">
+                  <img class="round-img" src="<%= breeds[i].img_url%>" alt="Picture of a <%= breeds[i].name %>">
                 </a>
                 <span class="round-img-text">
                   <%= breeds[i].name %>
@@ -70,7 +70,7 @@
             <% for(let i=0; i < 3; i+=1){ %>
               <li class="flex flex-col p-8">
                 <a class="round-link" href="<%= dogs[i].url %>">
-                  <img class="round-img" src="<%= dogs[i].img_ur %>" alt="Picture of <%= dogs[i].name %>">
+                  <img class="round-img" src="<%= dogs[i].img_url%>" alt="Picture of <%= dogs[i].name %>">
                 </a>
                 <span class="round-img-text">
                   <%= dogs[i].name %>

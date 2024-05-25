@@ -14,7 +14,7 @@
 <body>
   <%- include('../general/navBar') %>
     <main class="flex flex-col gap-8">
-      <img class="self-center size-96 rounded-full shadow-blurry sm:size-64" src="<%= breed.img_ur %>"
+      <img class="self-center size-96 rounded-full shadow-blurry sm:size-64" src="<%= breed.img_url%>"
         alt="Picture of <%= breed.name %>">
       <h1 class="title">
         <%- breed.name %>
@@ -42,7 +42,7 @@
         <% breedDogs.forEach((dog)=> { %>
           <li class="flex flex-col p-8 sm:p-4">
             <a class="round-link" href="<%= dog.url %>">
-              <img class="round-img" src="<%= dog.img_ur %>" alt="Picture of <%= dog.name %>">
+              <img class="round-img" src="<%= dog.img_url%>" alt="Picture of <%= dog.name %>">
             </a>
             <span class="self-center text-lg mt-6">
               <%= dog.name %>
