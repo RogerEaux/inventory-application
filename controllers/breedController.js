@@ -140,14 +140,45 @@ export const breedDeleteGet = asyncHandler(async (req, res, next) => {
     res.redirect('/inventory/breeds');
   }
 
-  res.render('breed/breedDelete', { breed, breedDogs });
+  res.render('breed/breedDelete', { breed, breedDogs, errors: null });
 });
 
-export const breedDeletePost = asyncHandler(async (req, res, next) => {
-  await Breed.findByIdAndDelete(req.body.breedID).exec();
-  await Dog.deleteMany({ breed: req.body.breedID }).exec();
-  res.redirect('/inventory/breeds');
-});
+export const breedDeletePost = [
+  body('password')
+    .trim()
+    .notEmpty()
+    .escape()
+    .withMessage('Password must be provided')
+    .custom((value) => {
+      console.log(value);
+      if (value !== process.env.PASSWORD) {
+        throw new Error('Incorrect password');
+      } else {
+        return value;
+      }
+    }),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      const [breed, breedDogs] = await Promise.all([
+        Breed.findById(req.params.id).populate('size').exec(),
+        Dog.find({ breed: req.params.id }, 'name').sort({ name: 1 }).exec(),
+      ]);
+
+      res.render('breed/breedDelete', {
+        breed,
+        breedDogs,
+        errors: errors.array(),
+      });
+    } else {
+      await Breed.findByIdAndDelete(req.body.breedID).exec();
+      await Dog.deleteMany({ breed: req.body.breedID }).exec();
+      res.redirect('/inventory/breeds');
+    }
+  }),
+];
 
 export const breedUpdateGet = asyncHandler(async (req, res, next) => {
   const [breed, sizes] = await Promise.all([
