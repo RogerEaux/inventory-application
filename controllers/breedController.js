@@ -91,19 +91,14 @@ export const breedCreatePost = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
 
-    let imgURL;
+    let imgURL =
+      'https://res.cloudinary.com/dyoh1algd/image/upload/v1716599228/dog_egrxor.svg';
 
     if (req.file) {
       if (req.body.password === process.env.PASSWORD) {
         imgURL = await cloudUpload(req.file.path);
-      } else {
-        imgURL =
-          'https://res.cloudinary.com/dyoh1algd/image/upload/v1716599228/dog_egrxor.svg';
       }
       await fs.unlink(req.file.path);
-    } else {
-      imgURL =
-        'https://res.cloudinary.com/dyoh1algd/image/upload/v1716599228/dog_egrxor.svg';
     }
 
     const breed = new Breed({
@@ -208,18 +203,13 @@ export const breedUpdatePost = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
 
-    let imgURL;
+    let imgURL = await Breed.findById(req.params.id, 'img_url').exec().img_url;
 
     if (req.file) {
       if (req.body.password === process.env.PASSWORD) {
         imgURL = await cloudUpload(req.file.path);
-      } else {
-        imgURL = breed.img_url;
       }
       await fs.unlink(req.file.path);
-    } else {
-      const breed = await Breed.findById(req.params.id, 'img_url').exec();
-      imgURL = breed.img_url;
     }
 
     const breed = new Breed({
