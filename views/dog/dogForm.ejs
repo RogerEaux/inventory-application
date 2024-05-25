@@ -12,18 +12,19 @@
 
 <body>
   <%- include('../general/navBar') %>
-    <main>">
-      <h1>
+    <main>
+      <h1 class="text-4xl font-bold">
         <%= title %>
       </h1>
-      <form method="post">
-        <label>
-          <span>*Name: </span>
-          <input required name="name" id="name" type="text" placeholder="Name of dog" value="<%=dog ? dog.name : '' %>">
+      <form method="post" enctype="multipart/form-data" class="flex flex-col gap-4 mt-8">
+        <label class="form-item">
+          <span class="font-bold">Name <span class="text-sm text-gray-500">required</span></span>
+          <input required name="name" id="name" type="text" placeholder="Name of dog" value="<%=dog ? dog.name : '' %>"
+            class="form-input">
         </label>
-        <label>
-          <span>*Breed: </span>
-          <select name="breed" id="breed" required>
+        <label class="form-item">
+          <span class="font-bold">Breed <span class="text-sm text-gray-500">required</span></span>
+          <select name="breed" id="breed" required class="form-input">
             <option value="">--Select a breed--</option>
             <% breeds.forEach((breed)=> { %>
               <% if(dog) { %>
@@ -44,22 +45,22 @@
                           <% }) %>
           </select>
         </label>
-        <label>
-          <span>Age (years): </span>
+        <label class="form-item">
+          <span class="font-bold">Age (years): </span>
           <input name="age" id="age" type="number" placeholder="Age of dog" step="any" min="0"
-            value="<%=dog ? dog.age : '' %>">
+            value="<%=dog ? dog.age : '' %>" class="form-input">
         </label>
-        <label>
-          <span>Weight (kg): </span>
+        <label class="form-item">
+          <span class="font-bold">Weight (kg): </span>
           <input name="weight" id="weight" type="number" placeholder="Weight of dog" step="any" min="0"
-            value="<%=dog ? dog.weight : '' %>">
+            value="<%=dog ? dog.weight : '' %>" class="form-input">
         </label>
-        <label>
-          <span>Height (cm): </span>
+        <label class="form-item">
+          <span class="font-bold">Height (cm): </span>
           <input name="height" id="height" type="number" placeholder="Height of dog" step="any" min="0"
-            value="<%=dog ? dog.height : '' %>">
+            value="<%=dog ? dog.height : '' %>" class="form-input">
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit" class="button border-black hover:bg-black mt-8">Submit</button>
       </form>
 
       <% if(errors){ %>
