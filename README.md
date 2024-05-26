@@ -2,7 +2,7 @@
 
 This project is a website that provides an inventory management system for a dog adoption center where users can see, create, update and delete different dogs in the system. The project is built upon the Express framwork via Express Generator. It uses an MVC design to manage data and handle requests. Models were created using Mongoose and data is stored in a Mongo database. EJS was used to create the views while using Tailwind to style them. Incoming data is validated using Express Validator. Additionally the application uses multer to process and temporarily store images to upload to Cloudinary to avoid storing image files in the Mongo database.
 
-[Checkout the live version here](https://github.com/RogerEaux/inventory-application)
+[Checkout the live version here](https://rogereaux-inventory-application.adaptable.app)
 
 ## Features
 
