@@ -7,6 +7,8 @@ import logger from 'morgan';
 import mongoose from 'mongoose';
 import indexRouter from './routes/index.js';
 import inventoryRouter from './routes/inventory.js';
+import compression from 'compression';
+import helmet from 'helmet';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const mongoDB = process.env.MONGODB_URI;
@@ -28,6 +30,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      'img-src': ["'self'", 'res.cloudinary.com'],
+    },
+  })
+);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
